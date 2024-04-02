@@ -53,7 +53,7 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ProDarna
 
 ## Auteurs
 
-- Mohamed El Morjani - Développeur Full Stack - [GitHub](https://github.com/ElmorjaniMohamed/pro-darna.git)
+- Mohamed El Morjani - Développeur Full Stack.
 
 ## Licence
 
