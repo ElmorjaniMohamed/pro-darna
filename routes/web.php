@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\VerifyController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Auth\RegisterController;
@@ -11,22 +12,12 @@ use App\Http\Controllers\Auth\LogoutController;
 
 Route::view('/admin', 'admin.index');
 Route::get('/', [HomeController::class, 'index'])->middleware('verified')->name('home');
-Route::get('/verify', [HomeController::class, 'verify'])->name('verification.notice');
+Route::get('/verify', [VerifyController::class, 'verify'])->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
 
-    return redirect('/auth/login');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', [VerifyController::class, 'verifyEmail'])->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::get('/resend/verification/email', [HomeController::class, 'resend'])->name('resend.email');
-
-// Route::view('/auth/login', 'auth.login');
-// Route::view('/auth/register', 'auth.register');
-// Route::view('/auth/reset-password', 'auth.reset-password');
-// Route::view('/auth/forgot-password', 'auth.forgot-password');
-// Route::view('/admin/profile', 'admin.profile');
-// Route::view('/admin/account-settings', 'admin.account-settings');// routes/web.php
+Route::get('/resend/verification/email', [VerifyController::class, 'resend'])->name('resend.email');
 
 // Registration routes
 Route::get('/auth/register', [RegisterController::class, 'index'])->name('register');
