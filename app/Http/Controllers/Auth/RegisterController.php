@@ -24,14 +24,15 @@ class RegisterController extends Controller
     public function register(RegisterUserRequest $request)
     {
         $validatedData = $request->validated();
-
         $user = $this->authService->register($validatedData);
         $user->sendEmailVerificationNotification();
-
+    
         \Auth::login($user);
 
-        return redirect()->route('home')->withSuccess('Successful registration!');
+        return redirect()->route('verification.notice')->withSuccess('Successful registration! Please verify your email.');
 
     }
+    
+    
     
 }

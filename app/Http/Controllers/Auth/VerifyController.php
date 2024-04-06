@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\EmailVerificationRequest;
 
 class VerifyController extends Controller
 {
@@ -17,14 +20,14 @@ class VerifyController extends Controller
             $user = Auth::user();
 
             if ($user->hasVerifiedEmail()) {
-                return redirect()->route('home')->withSuccess('Your email was already verified');
+                return redirect()->route('home')->withSuccess('Your email was already verified.');
             }
 
             $user->sendEmailVerificationNotification();
 
             return back()->withSuccess('Verification link sent successfully!');
         } else {
-            return redirect()->route('login')->withErrors('You must be logged in to resend the verification link');
+            return redirect()->route('login')->withErrors(['You must be logged in to resend the verification link.']);
         }
     }
     
@@ -32,6 +35,6 @@ class VerifyController extends Controller
     {
         $request->fulfill();
 
-        return redirect('/auth/login');
+        return redirect('/auth/login')->withSuccess('Email verified successfully. You can now log in.');
     }
 }

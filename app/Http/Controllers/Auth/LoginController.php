@@ -26,10 +26,10 @@ class LoginController extends Controller
         $credentials = $request->validated();
 
         if ($this->authService->login($credentials)) {
-            return redirect()->intended(route('home'))->withSuccess('Login successfuly!');
+            return redirect()->intended(route('home'))->withSuccess('Login successfully!');
         }
 
-        $credentials->sendEmailVerificationNotification();
+        $request->user()->sendFailedLoginNotification($credentials);
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',

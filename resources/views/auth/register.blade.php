@@ -156,12 +156,6 @@
                                     </span>
                                 </div>
                             </div>
-                            <div>
-                                <label class="flex cursor-pointer items-center">
-                                    <input type="checkbox" class="form-checkbox bg-white dark:bg-black" />
-                                    <span class="text-white-dark">Subscribe to weekly newsletter</span>
-                                </label>
-                            </div>
                             <button type="submit"
                                 class="btn btn-gradient btn[disabled] !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_rgba(67,97,238,0.44)]">
                                 Sign Up

@@ -19,9 +19,11 @@ class AuthService implements AuthInterface
 
     public function register(array $userData)
     {
+         
         $userData['password'] = Hash::make($userData['password']);
         $user = $this->userRepository->create($userData);
         return $user;
+        
     }
 
     public function login(array $credentials)
