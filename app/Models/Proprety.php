@@ -13,4 +13,9 @@ class Proprety extends Model
     {
         return $this->belongsTo(Agency::class);
     }
+
+    public function propertyType()
+    {
+        return $this->belongsTo(PropertyType::class);
+    }
 }

@@ -11,7 +11,7 @@ class UpdatePropretyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class UpdatePropretyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+            'address' => 'required|string|max:255',
+            'zipCode' => 'required|integer',
+            'status' => 'required|in:high price,low price',
+            'area' => 'required|string|max:255',
+            'nbr_of_bedroom' => 'required|integer',
+            'nbr_of_bathroom' => 'required|integer',
+            'nbr_of_garage' => 'required|integer',
+            'agency_id' => 'required|integer|exists:agencies,id',
         ];
     }
 }

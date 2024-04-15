@@ -11,8 +11,7 @@ class StoreAgencyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // Update this to your own logic
-        return true; // Allows all users to make this request
+        return true; 
     }
 
     /**

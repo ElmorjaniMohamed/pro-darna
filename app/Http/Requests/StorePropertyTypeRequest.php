@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAgencyRequest extends FormRequest
+class StorePropertyTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,6 @@ class UpdateAgencyRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'address' => 'required|string|max:255',
-            'zipCode' => 'required|integer',
-            'phone' => 'required|string|max:15',
-            'email' => 'required|email|max:255',
-            'number_of_agent' => 'required|integer',
-            'webSite' => 'sometimes|url|max:255',
         ];
     }
 }
