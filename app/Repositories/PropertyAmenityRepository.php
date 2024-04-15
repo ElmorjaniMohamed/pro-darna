@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Repositories\PropertyTypeRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class PropertyTypeRepository implements PropertyTypeRepositoryInterface
+class PropertyAmenityRepository implements PropertyAmenityRepositoryInterface
 {
     public function all(): LengthAwarePaginator
     {

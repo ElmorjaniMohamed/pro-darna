@@ -2,21 +2,22 @@
 
 namespace App\Repositories;
 
-use App\Models\Proprety;
+use App\Models\Property;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Repositories\PropertyRepositoryInterface;
 
 
-class PropretyRepository implements PropretyRepositoryInterface
+class PropertyRepository implements PropertyRepositoryInterface
 {
     public function all(): LengthAwarePaginator
     {
-        return Proprety::paginate(6);
+        return Property::paginate(6);
     }
     
     public function create(array $attributes): Model
     {
-        return Proprety::create($attributes);
+        return Property::create($attributes);
     }
     public function update(array $attributes, int $id): bool
     {
@@ -36,6 +37,6 @@ class PropretyRepository implements PropretyRepositoryInterface
 
     protected function find(int $id): ?Model
     {
-        return Proprety::find($id);
+        return Property::find($id);
     }
 }

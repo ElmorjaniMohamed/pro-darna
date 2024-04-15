@@ -5,13 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class PropertyType extends Model
+class ContactInfo extends Model
 {
     use HasFactory;
-
-    public function properties()
-    {
-        return $this->hasMany(Property::class);
-    }
 }

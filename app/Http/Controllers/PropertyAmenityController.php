@@ -2,65 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PropertyAmenity;
 use App\Http\Requests\StorePropertyAmenityRequest;
 use App\Http\Requests\UpdatePropertyAmenityRequest;
+use App\Repositories\PropertyAmenityRepositoryInterface;
 
 class PropertyAmenityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private $propertyAmenityRepository;
+
+    public function __construct(PropertyAmenityRepositoryInterface $propertyAmenityRepository)
+    {
+        $this->propertyAmenityRepository = $propertyAmenityRepository;
+    }
+
     public function index()
     {
-        //
+        $propertyAmenities = $this->propertyAmenityRepository->all();
+        return view('propertyAmenities.index', compact('propertyAmenities'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StorePropertyAmenityRequest $request)
     {
-        //
+        $this->propertyAmenityRepository->create($request->validated());
+        return redirect()->route('propertyAmenities.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(PropertyAmenity $propertyAmenity)
+    public function update(UpdatePropertyAmenityRequest $request, int $id)
     {
-        //
+        $this->propertyAmenityRepository->update($request->validated(), $id);
+        return redirect()->route('propertyAmenities.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(PropertyAmenity $propertyAmenity)
+    public function destroy(int $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePropertyAmenityRequest $request, PropertyAmenity $propertyAmenity)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(PropertyAmenity $propertyAmenity)
-    {
-        //
+        $this->propertyAmenityRepository->delete($id);
+        return redirect()->route('propertyAmenities.index');
     }
 }

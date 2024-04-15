@@ -14,6 +14,8 @@ use App\Repositories\AgencyRepositoryInterface;
 use App\Repositories\AgencyRepository;
 use App\Repositories\PropretyRepositoryInterface;
 use App\Repositories\PropretyRepository;
+use App\Repositories\PropertyTypeRepositoryInterface;
+use App\Repositories\PropertyTypeRepository;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -29,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IUserRepository::class, UserRepository::class);
         $this->app->bind(AgencyRepositoryInterface::class, AgencyRepository::class);
         $this->app->bind(PropretyRepositoryInterface::class, PropretyRepository::class);
+        $this->app->bind(PropertyTypeRepositoryInterface::class, PropertyTypeRepository::class);
     }
 
     /**
