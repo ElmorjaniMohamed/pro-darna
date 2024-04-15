@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Blade;
 use App\Repositories\AgencyRepositoryInterface;
 use App\Repositories\AgencyRepository;
+use App\Repositories\PropretyRepositoryInterface;
+use App\Repositories\PropretyRepository;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(AuthInterface::class, AuthService::class);
         $this->app->bind(IUserRepository::class, UserRepository::class);
         $this->app->bind(AgencyRepositoryInterface::class, AgencyRepository::class);
+        $this->app->bind(PropretyRepositoryInterface::class, PropretyRepository::class);
     }
 
     /**

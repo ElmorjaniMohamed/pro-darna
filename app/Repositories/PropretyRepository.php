@@ -2,44 +2,40 @@
 
 namespace App\Repositories;
 
-use App\Models\Agency;
+use App\Models\Proprety;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class AgencyRepository implements AgencyRepositoryInterface
+
+class PropretyRepository implements PropretyRepositoryInterface
 {
     public function all(): LengthAwarePaginator
     {
-        return Agency::paginate(6);
+        return Proprety::paginate(6);
     }
-
+    
     public function create(array $attributes): Model
     {
-        return Agency::create($attributes);
+        return Proprety::create($attributes);
     }
-
     public function update(array $attributes, int $id): bool
     {
-        $agency = $this->find($id);
-        if ($agency) {
-            return $agency->update($attributes);
-        }
-        return false;
+        return $this-> find($id)->update($attributes);
     }
 
     public function delete(int $id): bool
     {
-        $agency = $this->find($id);
+        $property = $this->find($id);
         
-        if ($agency) 
+        if ($property) 
         {
-            return $agency->delete();
+            return $property->delete();
         }
         return false;
     }
 
     protected function find(int $id): ?Model
     {
-        return Agency::find($id);
+        return Proprety::find($id);
     }
 }

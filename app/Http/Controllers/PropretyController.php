@@ -2,65 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Proprety;
+use App\Repositories\PropretyRepositoryInterface;
 use App\Http\Requests\StorePropretyRequest;
 use App\Http\Requests\UpdatePropretyRequest;
 
 class PropretyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private $propretyRepository;
+
+    public function __construct(PropretyRepositoryInterface $propretyRepository)
+    {
+        $this->propretyRepository = $propretyRepository;
+    }
+
     public function index()
     {
-        //
+        $propreties = $this->propretyRepository->all();
+        return view('propreties.index', compact('propreties'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StorePropretyRequest $request)
     {
-        //
+        $this->propretyRepository->create($request->validated());
+        return redirect()->route('propreties.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Proprety $proprety)
+    public function update(UpdatePropretyRequest $request, int $id)
     {
-        //
+        $this->propretyRepository->update($request->validated(), $id);
+        return redirect()->route('propreties.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Proprety $proprety)
+    public function destroy(int $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePropretyRequest $request, Proprety $proprety)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Proprety $proprety)
-    {
-        //
+        $this->propretyRepository->delete($id);
+        return redirect()->route('propreties.index');
     }
 }

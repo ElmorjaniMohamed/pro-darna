@@ -11,18 +11,24 @@ class StoreAgencyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // Update this to your own logic
+        return true; // Allows all users to make this request
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'address' => 'required|string|max:255',
+            'zipCode' => 'required|integer',
+            'phone' => 'required|string|max:15',
+            'email' => 'required|email|max:255',
+            'number_of_agent' => 'required|integer',
+            'webSite' => 'required|url|max:255',
         ];
     }
 }
