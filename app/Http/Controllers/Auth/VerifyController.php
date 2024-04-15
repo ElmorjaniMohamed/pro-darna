@@ -30,11 +30,17 @@ class VerifyController extends Controller
             return redirect()->route('login')->withErrors(['You must be logged in to resend the verification link.']);
         }
     }
-    
-    public function verifyEmail(EmailVerificationRequest $request)
-    {
-        $request->fulfill();
 
-        return redirect('/auth/login')->withSuccess('Email verified successfully. You can now log in.');
+    public function verifyEmail(Request $request, $id, $hash)
+    {
+        $user = $request->user();
+
+        if ($id == $user->getKey() && hash_equals(sha1($user->getEmailForVerification()), $hash)) {
+            $user->markEmailAsVerified();
+            return redirect('/auth/login')->withSuccess('Email verified successfully. You can now log in.');
+        }
+
+        return redirect('/auth/login')->withErrors(['Invalid verification link.']);
     }
+
 }

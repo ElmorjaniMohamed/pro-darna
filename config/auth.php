@@ -110,7 +110,8 @@ return [
 
 
     'verification' => [
-        'notification' => App\Notifications\CustomVerifyEmail::class,
-    ],
+        'notification' => \App\Notifications\VerifyEmail::class,
+    ],    
+    
 
 ];

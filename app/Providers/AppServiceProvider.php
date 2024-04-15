@@ -10,7 +10,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Permission;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Schema;
+use App\Repositories\AgencyRepositoryInterface;
+use App\Repositories\AgencyRepository;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(AuthInterface::class, AuthService::class);
         $this->app->bind(IUserRepository::class, UserRepository::class);
+        $this->app->bind(AgencyRepositoryInterface::class, AgencyRepository::class);
     }
 
     /**
