@@ -5,7 +5,7 @@ namespace App\Repositories;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-interface PropretyRepositoryInterface
+interface PropertyRepositoryInterface
 {
     public function all(): LengthAwarePaginator;
     public function create(array $attributes): Model;
