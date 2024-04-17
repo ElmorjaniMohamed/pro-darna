@@ -32,6 +32,7 @@ class UpdatePropertyRequest extends FormRequest
             'nbr_of_bedroom' => 'required|integer',
             'nbr_of_bathroom' => 'required|integer',
             'nbr_of_garage' => 'required|integer',
+            'property_type_id' => 'required|integer|exists:property_types,id',
             'agency_id' => 'required|integer|exists:agencies,id',
         ];
     }
