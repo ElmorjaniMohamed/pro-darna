@@ -9,6 +9,23 @@ class Property extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'price',
+        'description',
+        'address',
+        'zipCode',
+        'status',
+        'area',
+        'nbr_of_bedroom',
+        'nbr_of_bathroom',
+        'nbr_of_garage',
+        'agency_id',
+        'property_type_id',
+        'category_id',
+        'image',
+    ];
+
     public function agency()
     {
         return $this->belongsTo(Agency::class);
