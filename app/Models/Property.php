@@ -23,4 +23,9 @@ class Property extends Model
     {
         return $this->belongsToMany(PropertyAmenity::class, 'amenity_property');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

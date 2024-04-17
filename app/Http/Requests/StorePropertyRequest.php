@@ -33,6 +33,8 @@ class StorePropertyRequest extends FormRequest
             'nbr_of_bathroom' => 'required|integer',
             'nbr_of_garage' => 'required|integer',
             'agency_id' => 'required|integer|exists:agencies,id',
+            'property_type_id' => 'required|integer|exists:property_types,id',
+            'category_id' => 'required|integer|exists:categories,id',
         ];
     }
 }

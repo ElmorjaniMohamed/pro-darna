@@ -1,46 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Repositories;
 
 use App\Models\ContactInfo;
-use App\Http\Requests\StoreContactInfoRequest;
-use App\Http\Requests\UpdateContactInfoRequest;
 use App\Repositories\ContactInfoRepositoryInterface;
 
-class ContactInfoController extends Controller
+class ContactInfoRepository implements ContactInfoRepositoryInterface
 {
-    private $contactInfoRepository;
-
-    public function __construct(ContactInfoRepositoryInterface $contactInfoRepository)
+    public function all()
     {
-        $this->contactInfoRepository = $contactInfoRepository;
+        return ContactInfo::all();
     }
 
-    public function index()
+    public function create(array $data)
     {
-        $contactInfos = $this->contactInfoRepository->all();
-        return view('contactInfos.index', compact('contactInfos'));
+        return ContactInfo::create($data);
     }
 
-    public function create()
+    public function delete(ContactInfo $contactInfo)
     {
-        return view('contactInfos.create');
-    }
-
-    public function store(StoreContactInfoRequest $request)
-    {
-        $this->contactInfoRepository->create($request->validated());
-        return redirect()->route('contactInfos.index');
-    }
-
-    public function show(ContactInfo $contactInfo)
-    {
-        return view('contactInfos.show', compact('contactInfo'));
-    }
-
-    public function destroy(ContactInfo $contactInfo)
-    {
-        $this->contactInfoRepository->delete($contactInfo);
-        return redirect()->route('contactInfos.index');
+        return $contactInfo->delete();
     }
 }
