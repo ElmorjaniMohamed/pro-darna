@@ -13,23 +13,6 @@ class PropertyAmenitySeeder extends Seeder
      */
     public function run(): void
     {
-        $amenities = [
-            'Air Conditioning',
-            'Bedding',
-            'Balcony',
-            'Cable TV',
-            'Oven',
-            'Internet',
-            'Parking',
-            'Lift',
-            'Pool',
-            'Dishwasher',
-            'Washing Machine',
-            'Toaster',
-        ];
-
-        foreach ($amenities as $amenity) {
-            PropertyAmenity::create(['name' => $amenity]);
-        }
+        PropertyAmenity::factory()->count(50)->create();
     }
 }

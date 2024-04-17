@@ -13,21 +13,6 @@ class PropertyTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        $propertyTypes = [
-            'Single-family home',
-            'Condominium',
-            'Townhouse',
-            'Bungalow',
-            'Cottage',
-            'Loft',
-            'Ranch',
-            'Farmhouse',
-            'Mansion',
-            'Studio apartment',
-        ];
-
-        foreach ($propertyTypes as $type) {
-            PropertyType::create(['name' => $type]);
-        }
+        PropertyType::factory()->count(10)->create();
     }
 }
