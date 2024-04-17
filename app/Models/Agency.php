@@ -10,6 +10,17 @@ class Agency extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'address',
+        'zipCode',
+        'phone',
+        'email',
+        'number_of_agent',
+        'webSite',
+    ];
+
     public function properties()
     {
         return $this->hasMany(Property::class);
