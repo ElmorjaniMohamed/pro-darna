@@ -35,6 +35,7 @@ class StorePropertyRequest extends FormRequest
             'agency_id' => 'required|integer|exists:agencies,id',
             'property_type_id' => 'required|integer|exists:property_types,id',
             'category_id' => 'required|integer|exists:categories,id',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             
         ];
     }
