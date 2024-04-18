@@ -25,4 +25,9 @@ class Agency extends Model
     {
         return $this->hasMany(Property::class);
     }
+
+    public function media()
+    {
+        return $this->hasMany(Media::class);
+    }
 }
