@@ -19,14 +19,7 @@
                             placeholder="Name" required="">
                     </div>
                 </div>
-                <button type="submit"
-                    class="flex items-center justify-center text-white bg-primary hover:bg-primary focus:ring-4  font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary dark:hover:bg-primary">
-                    <svg class="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewbox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                            clip-rule="evenodd" />
-                    </svg>
+                <button type="submit" class="btn btn-primary !mt-6">
                     Create
                 </button>
             </form>
