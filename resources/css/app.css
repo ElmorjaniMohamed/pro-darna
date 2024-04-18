@@ -4,8 +4,14 @@
 /* animate.css */
 @import 'animate.css';
 
+/* file upload */
+@import 'file-upload-preview.css';
+
 /* quill editor */
 /* @import 'quill-editor.css'; */
+
+/* EasyMDE CSS */
+@import 'easymde.min.css';
 
 /* full calendar */
 /* @import 'fullcalendar.css'; */
