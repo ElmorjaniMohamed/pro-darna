@@ -6,6 +6,8 @@ use App\Models\Agency;
 use App\Repositories\AgencyRepositoryInterface;
 use App\Http\Requests\StoreAgencyRequest;
 use App\Http\Requests\UpdateAgencyRequest;
+use App\Models\Media;
+use Intervention\Image\Facades\Image;
 
 class AgencyController extends Controller
 {
@@ -29,7 +31,27 @@ class AgencyController extends Controller
 
     public function store(StoreAgencyRequest $request)
     {
-        $this->agencyRepository->create($request->validated());
+        $validated = $request->validated();
+        dd($validated);
+        $agency = $this->agencyRepository->create($validated);
+        dd($agency);
+
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $filename);
+            Image::make($image)->resize(800, 400)->save($location);
+
+            // Save image details into media table
+            $media = new Media();
+            $media->agency_id = $agency->id;
+            $media->file_name = $filename;
+            $media->file_type = $image->getClientMimeType();
+            $media->file_path = 'images/' . $filename;
+            $media->save();
+        }
+
         return redirect()->route('agencies.index');
     }
 
