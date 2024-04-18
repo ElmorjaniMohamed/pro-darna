@@ -16,6 +16,10 @@
 
     <script src="/assets/js/perfect-scrollbar.min.js"></script>
     <script defer src="/assets/js/popper.min.js"></script>
+    <script defer src="/assets/js/tippy-bundle.umd.min.js"></script>
+    <script defer src="{{asset('assets/js/sweetalert.min.js')}}"></script>
+    <script src="{{asset('assets/js/easymde.min.js')}}"></script>
+    <script src="{{asset('assets/js/file-upload-with-preview.iife.js')}}"></script>
 
     @vite(['resources/css/app.css'])
     @vite(['node_modules/flowbite/dist/flowbite.min.js'])
@@ -36,14 +40,14 @@
         class="screen_loader fixed inset-0 bg-[#fafafa] dark:bg-[#060818] z-[60] grid place-content-center animate__animated">
         <svg width="64" height="64" viewBox="0 0 135 135" xmlns="http://www.w3.org/2000/svg" fill="#4361ee">
             <path
-            d="M478.24,0V116.62A43.21,43.21,0,0,1,435,159.84h-75.9c-111.95,0-208.21,86.09-213.35,197.9A207.68,207.68,0,0,0,353.34,575.38h99.07V478.26H353.34A110.77,110.77,0,0,1,242.92,360.42C246.63,301.89,296.52,257,355.16,257H435a43.21,43.21,0,0,1,43.2,43.22V452.41h97.14V97.15A97.15,97.15,0,0,0,478.24,0Z" />
-                <animateTransform attributeName="transform" type="rotate" from="0 67 67" to="-360 67 67" dur="2.5s"
-                    repeatCount="indefinite" />
+                d="M478.24,0V116.62A43.21,43.21,0,0,1,435,159.84h-75.9c-111.95,0-208.21,86.09-213.35,197.9A207.68,207.68,0,0,0,353.34,575.38h99.07V478.26H353.34A110.77,110.77,0,0,1,242.92,360.42C246.63,301.89,296.52,257,355.16,257H435a43.21,43.21,0,0,1,43.2,43.22V452.41h97.14V97.15A97.15,97.15,0,0,0,478.24,0Z" />
+            <animateTransform attributeName="transform" type="rotate" from="0 67 67" to="-360 67 67" dur="2.5s"
+                repeatCount="indefinite" />
             </path>
             <path
-            d="M478.24,0V116.62A43.21,43.21,0,0,1,435,159.84h-75.9c-111.95,0-208.21,86.09-213.35,197.9A207.68,207.68,0,0,0,353.34,575.38h99.07V478.26H353.34A110.77,110.77,0,0,1,242.92,360.42C246.63,301.89,296.52,257,355.16,257H435a43.21,43.21,0,0,1,43.2,43.22V452.41h97.14V97.15A97.15,97.15,0,0,0,478.24,0Z" />
-                <animateTransform attributeName="transform" type="rotate" from="0 67 67" to="360 67 67" dur="8s"
-                    repeatCount="indefinite" />
+                d="M478.24,0V116.62A43.21,43.21,0,0,1,435,159.84h-75.9c-111.95,0-208.21,86.09-213.35,197.9A207.68,207.68,0,0,0,353.34,575.38h99.07V478.26H353.34A110.77,110.77,0,0,1,242.92,360.42C246.63,301.89,296.52,257,355.16,257H435a43.21,43.21,0,0,1,43.2,43.22V452.41h97.14V97.15A97.15,97.15,0,0,0,478.24,0Z" />
+            <animateTransform attributeName="transform" type="rotate" from="0 67 67" to="360 67 67" dur="8s"
+                repeatCount="indefinite" />
             </path>
         </svg>
     </div>
@@ -108,12 +112,13 @@
             <x-common.footer />
         </div>
     </div>
-    <script src="/assets/js/alpine-collaspe.min.js"></script>
-    <script src="/assets/js/alpine-persist.min.js"></script>
-    <script defer src="/assets/js/alpine-ui.min.js"></script>
-    <script defer src="/assets/js/alpine-focus.min.js"></script>
-    <script defer src="/assets/js/alpine.min.js"></script>
-    <script src="/assets/js/custom.js"></script>
+    <script src="{{ asset('assets/js/alpine-collaspe.min.js') }}"></script>
+    <script src="{{ asset('assets/js/alpine-persist.min.js') }}"></script>
+    <script defer src="{{ asset('assets/js/alpine-ui.min.js') }}"></script>
+    <script defer src="{{ asset('assets/js/alpine-focus.min.js') }}"></script>
+    <script defer src="{{ asset('assets/js/alpine.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+
 
 </body>
 
