@@ -32,37 +32,53 @@ class AgencyController extends Controller
     public function store(StoreAgencyRequest $request)
     {
         $validated = $request->validated();
-        dd($validated);
         $agency = $this->agencyRepository->create($validated);
-        dd($agency);
-
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $filename);
-            Image::make($image)->resize(800, 400)->save($location);
+            $path = public_path('storage/images/agencies/' . $filename);
+            $path = $image->storeAs('images/agencies', $filename, 'public');
 
             // Save image details into media table
             $media = new Media();
             $media->agency_id = $agency->id;
             $media->file_name = $filename;
             $media->file_type = $image->getClientMimeType();
-            $media->file_path = 'images/' . $filename;
+            $media->file_path = $path;
             $media->save();
+            // dd($media);
         }
 
         return redirect()->route('agencies.index');
     }
 
-    public function edit()
+    public function edit(Agency $agency)
     {
-        return view('agent.agencies.edit');
+        return view('agent.agencies.edit', compact('agency'));
     }
 
-    public function update(UpdateAgencyRequest $request, int $id)
+    public function update(UpdateAgencyRequest $request, Agency $agency)
     {
-        $this->agencyRepository->update($request->validated(), $id);
+        $validated = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('images/agencies', $filename, 'public');
+
+            // Update image details in media table
+            $media = $agency->media->first();
+            if ($media) {
+                $media->file_name = $filename;
+                $media->file_type = $image->getClientMimeType();
+                $media->file_path = $path;
+                $media->save();
+            }
+        }
+
+        $this->agencyRepository->update($validated, $agency->id);
+
         return redirect()->route('agencies.index');
     }
 
