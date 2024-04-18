@@ -2,7 +2,8 @@
 module.exports = {
     content: ["./resources/**/*.blade.php",
     "./resources/**/*.js",
-    "./resources/**/*.vue"],
+    "./resources/**/*.vue",
+    "./node_modules/flowbite/**/*.js",],
     darkMode: "class",
     theme: {
       container: {
@@ -10,15 +11,16 @@ module.exports = {
       },
       extend: {
         colors: {
-          primary: {
-            DEFAULT: "#4361ee",
-            light: "#eaf1ff",
-            "dark-light": "rgba(67,97,238,.15)",
-          },
           secondary: {
-            DEFAULT: "#805dca",
-            light: "#ebe4f7",
-            "dark-light": "rgb(128 93 202 / 15%)",
+            DEFAULT: "#0B2C3D",
+            light: "#2E4A67",
+            "dark-light": "rgba(11, 44, 61, .15)", 
+          },
+          
+          primary: {
+            DEFAULT: "#B39359",
+            light: "#D4B881",
+            "dark-light": "rgba(179, 147, 89, .15)", 
           },
           success: {
             DEFAULT: "#00ab55",
@@ -85,6 +87,7 @@ module.exports = {
         strategy: "base", // only generate global styles
       }),
       require("@tailwindcss/typography"),
+      require('flowbite/plugin'),
     ],
   };
 
