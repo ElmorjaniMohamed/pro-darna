@@ -1,4 +1,8 @@
 <x-layout.default>
+
+    <style>
+   
+    </style>
     <!-- Start block -->
     <section class="bg-none p-3 sm:p-5 antialiased">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
@@ -47,7 +51,7 @@
                                 <th scope="col" class="px-4 py-4">ZipCode</th>
                                 <th scope="col" class="px-4 py-4">Phone</th>
                                 <th scope="col" class="px-4 py-4">email</th>
-                                <th scope="col" class="px-4 py-4">N° Agent</th>
+                                <th scope="col" class="px-4 py-4 w-32">N° Agent</th>
                                 <th scope="col" class="px-4 py-3">website</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
@@ -65,16 +69,27 @@
                                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $agency->name }}
                                     </td>
-                                    <td class="px-4 py-3 font-medium truncate w-10 text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $agency->description }}
+                                    <td class="px-4 py-3 font-medium truncate text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="truncate w-56">
+                                            {{ $agency->description }}
+                                        </div>
                                     </td>
                                     <td class="px-4 py-3">{{ $agency->zipCode }}</td>
-                                    <td class="px-4 py-3">{{ $agency->phone }}</td>
+                                    <td class="px-4 py-3">
+                                        <div class="truncate w-32">
+                                            {{ $agency->phone }}
+                                        </div>
+                                    </td>
                                     <td class="px-4 py-3">{{ $agency->email }}</td>
                                     </td>
-                                    <td class="px-4 py-3">{{ $agency->numbre_of_agent }}
+                                    <td class="px-4 py-3 w-32">
+                                        {{ $agency->numbre_of_agent }}
                                     </td>
-                                    <td class="px-4 py-3">{{ $agency->webSite }}</td>
+                                    <td class="px-4 py-3">
+                                        <div class="truncate w-40">
+                                            {{ $agency->webSite }}
+                                        </div> 
+                                    </td>
                                     <td class="px-4 py-3 flex items-center justify-end">
                                         <ul class="flex items-center justify-center gap-2">
                                             <li>

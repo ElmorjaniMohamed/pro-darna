@@ -20,4 +20,9 @@ class Media extends Model
     {
         return $this->belongsTo(Property::class);
     }
+
+    public function agency()
+    {
+        return $this->belongsTo(Agency::class);
+    }
 }
