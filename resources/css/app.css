@@ -5,10 +5,10 @@
 @import 'animate.css';
 
 /* quill editor */
-@import 'quill-editor.css';
+/* @import 'quill-editor.css'; */
 
 /* full calendar */
-@import 'fullcalendar.css';
+/* @import 'fullcalendar.css'; */
 
 /* swiper */
 @import 'swiper.css';
@@ -20,13 +20,13 @@
 @import 'tippy.css';
 
 /* noUi-slider */
-@import 'noui-slider.css';
+/* @import 'noui-slider.css'; */
 
 /* flatpickr */
 @import 'flatpickr.css';
 
 /* file upload with preview */
-@import 'file-upload-preview.css';
+/* @import 'file-upload-preview.css'; */
 
 /* markdown-editor */
 @import 'markdown-editor.css';
@@ -36,9 +36,6 @@
 
 /* scrumboard */
 @import 'scrumboard.css';
-
-/* simple-datatable */
-@import 'simple-datatables.css';
 
 /* dragndrop */
 @import 'dragndrop.css';
@@ -94,7 +91,7 @@
 
     .sidebar .nav-item > button,
     .sidebar .nav-item > a {
-        @apply mb-1 flex w-full items-center justify-between overflow-hidden whitespace-nowrap rounded-md p-2.5 text-[#506690] hover:bg-[#000]/[0.08] hover:text-black dark:hover:bg-[#181f32] dark:hover:text-white-dark;
+        @apply mb-1 flex w-full items-center justify-between overflow-hidden whitespace-nowrap rounded-md p-2.5  hover:bg-[#000]/[0.08] hover:text-black dark:hover:bg-[#181f32] dark:hover:text-white-dark;
     }
     .sidebar .nav-item > button.active,
     .sidebar .nav-item > a.active {
@@ -675,4 +672,6 @@ hover:text-primary hover:before:!bg-primary ltr:before:mr-2 rtl:before:ml-2 dark
 [dir='rtl'] .apexcharts-tooltip-marker {
     @apply mr-0 ml-2.5;
 }
+
+
 

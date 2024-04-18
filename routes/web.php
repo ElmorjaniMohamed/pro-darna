@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerifyController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PropertyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -35,3 +38,13 @@ Route::post('/forget-password', [ForgetPasswordController::class, 'submitForgetP
 // Reset password
 Route::get('/reset-password/{token}', [ResetPasswordController::class, 'index'])->name('reset.password.get');
 Route::post('/reset-password', [ResetPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+
+Route::prefix('admin')->group(function () {
+    Route::resource('categories', CategoryController::class);
+});
+
+Route::prefix('agent')->group(function () {
+    Route::resource('agencies', AgencyController::class);
+    Route::resource('properties', PropertyController::class);
+});

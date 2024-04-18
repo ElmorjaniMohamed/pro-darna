@@ -18,6 +18,7 @@
     <script defer src="/assets/js/popper.min.js"></script>
 
     @vite(['resources/css/app.css'])
+    @vite(['node_modules/flowbite/dist/flowbite.min.js'])
 </head>
 
 <body x-data="main" class="antialiased relative font-nunito text-sm font-normal overflow-x-hidden"

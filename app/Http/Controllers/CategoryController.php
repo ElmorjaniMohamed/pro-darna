@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Repositories\CategoryRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 
 class CategoryController extends Controller
 {
@@ -18,13 +19,13 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = $this->categoryRepository->all();
-        return view('categories.index', compact('categories'));
+        $categories = Category::paginate(6);
+        return view('admin.categories.index', compact('categories'));
     }
 
     public function create()
     {
-        return view('categories.create');
+        return view('admin.categories.create');
     }
 
     public function store(StoreCategoryRequest $request)
@@ -35,19 +36,34 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('categories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $this->categoryRepository->update($request->validated(), $category);
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
-    public function destroy(Category $category)
+    public function destroy(Category $category, int $id): JsonResponse
     {
-        $this->categoryRepository->delete($category);
-        return redirect()->route('categories.index');
+        
+        if ($category->ajax()) {
+
+            $category = Category::find($id);
+    
+            if ($category) {
+    
+                $this->categoryRepository->delete($category);
+                return response()->json(['status' => 'success', 'message' => 'Category deleted successfully']);
+            } else {
+                return response()->json(['status' => 'error', 'message' => 'Category not found'], 404);
+            }
+        } else {
+    
+            return response()->json(['status' => 'error', 'message' => 'Unauthorized'], 401);
+        }
     }
+
 
 }

@@ -57,7 +57,7 @@
                 </li>
 
                 <h2
-                    class="py-3 px-7 flex items-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4 mb-1">
+                    class="py-3 mb-2 px-7 flex items-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4">
 
                     <svg class="w-4 h-5 flex-none hidden" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
                         fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -67,12 +67,56 @@
                 </h2>
 
                 <li class="nav-item">
-                    <ul>
-                        <li class="menu nav-item">
-                            <button type="button" class="nav-link group"
-                                :class="{ 'active': activeDropdown === 'invoice' }"
-                                @click="activeDropdown === 'invoice' ? activeDropdown = null : activeDropdown = 'invoice'">
+                    <ul class="space-y-2">
+                        <li class="nav-item rounded-md  {{ request()->routeIs('categories.*') ? 'bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark' : '' }}">
+                            <a href="{{route('categories.index')}}" class="group">
                                 <div class="flex items-center">
+
+                                    <svg class="group-hover:!text-primary {{ request()->routeIs('categories.*') ? '!text-primary' : '' }} shrink-0 " width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M4.97883 9.68508C2.99294 8.89073 2 8.49355 2 8C2 7.50645 2.99294 7.10927 4.97883 6.31492L7.7873 5.19153C9.77318 4.39718 10.7661 4 12 4C13.2339 4 14.2268 4.39718 16.2127 5.19153L19.0212 6.31492C21.0071 7.10927 22 7.50645 22 8C22 8.49355 21.0071 8.89073 19.0212 9.68508L16.2127 10.8085C14.2268 11.6028 13.2339 12 12 12C10.7661 12 9.77318 11.6028 7.7873 10.8085L4.97883 9.68508Z"
+                                            stroke="currentColor" stroke-width="1.5" />
+                                        <path
+                                            d="M22 12C22 12 21.0071 12.8907 19.0212 13.6851L16.2127 14.8085C14.2268 15.6028 13.2339 16 12 16C10.7661 16 9.77318 15.6028 7.7873 14.8085L4.97883 13.6851C2.99294 12.8907 2 12 2 12"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                        <path
+                                            d="M22 16C22 16 21.0071 16.8907 19.0212 17.6851L16.2127 18.8085C14.2268 19.6028 13.2339 20 12 20C10.7661 20 9.77318 19.6028 7.7873 18.8085L4.97883 17.6851C2.99294 16.8907 2 16 2 16"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                    </svg>
+                                    <span
+                                        class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Categories</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item rounded-md  {{ request()->routeIs('categories.*') ? 'bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark' : '' }}" >
+                            <a href="{{route('agencies.index')}}" class="group">
+                                <div class="flex items-center">
+
+                                    <svg class="group-hover:!text-primary {{ request()->routeIs('agencies.*') ? '!text-primary' : '' }} shrink-0" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.5"
+                                            d="M2.5 6.5C2.5 4.29086 4.29086 2.5 6.5 2.5C8.70914 2.5 10.5 4.29086 10.5 6.5V9.16667C10.5 9.47666 10.5 9.63165 10.4659 9.75882C10.3735 10.1039 10.1039 10.3735 9.75882 10.4659C9.63165 10.5 9.47666 10.5 9.16667 10.5H6.5C4.29086 10.5 2.5 8.70914 2.5 6.5Z"
+                                            stroke="currentColor" stroke-width="1.5" />
+                                        <path opacity="0.5"
+                                            d="M13.5 14.8333C13.5 14.5233 13.5 14.3683 13.5341 14.2412C13.6265 13.8961 13.8961 13.6265 14.2412 13.5341C14.3683 13.5 14.5233 13.5 14.8333 13.5H17.5C19.7091 13.5 21.5 15.2909 21.5 17.5C21.5 19.7091 19.7091 21.5 17.5 21.5C15.2909 21.5 13.5 19.7091 13.5 17.5V14.8333Z"
+                                            stroke="currentColor" stroke-width="1.5" />
+                                        <path
+                                            d="M2.5 17.5C2.5 15.2909 4.29086 13.5 6.5 13.5H8.9C9.46005 13.5 9.74008 13.5 9.95399 13.609C10.1422 13.7049 10.2951 13.8578 10.391 14.046C10.5 14.2599 10.5 14.5399 10.5 15.1V17.5C10.5 19.7091 8.70914 21.5 6.5 21.5C4.29086 21.5 2.5 19.7091 2.5 17.5Z"
+                                            stroke="currentColor" stroke-width="1.5" />
+                                        <path
+                                            d="M13.5 6.5C13.5 4.29086 15.2909 2.5 17.5 2.5C19.7091 2.5 21.5 4.29086 21.5 6.5C21.5 8.70914 19.7091 10.5 17.5 10.5H14.6429C14.5102 10.5 14.4438 10.5 14.388 10.4937C13.9244 10.4415 13.5585 10.0756 13.5063 9.61196C13.5 9.55616 13.5 9.48982 13.5 9.35714V6.5Z"
+                                            stroke="currentColor" stroke-width="1.5" />
+                                    </svg>
+                                    <span
+                                        class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Agencies</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/apps/calendar" class="group">
+                                <div class="flex items-center">
+
                                     <svg class="group-hover:!text-primary shrink-0" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M22 22L2 22" stroke="currentColor" stroke-width="1.5"
@@ -95,89 +139,7 @@
                                             stroke="currentColor" stroke-width="1.5" />
                                     </svg>
                                     <span
-                                        class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Propreties</span>
-                                </div>
-                                <div class="rtl:rotate-180" :class="{ '!rotate-90': activeDropdown === 'invoice' }">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </div>
-                            </button>
-                            <ul x-cloak x-show="activeDropdown === 'invoice'" x-collapse
-                                class="sub-menu text-gray-500">
-                                <li>
-                                    <a href="/apps/invoice/list">List</a>
-                                </li>
-                                <li>
-                                    <a href="/apps/invoice/add">Add</a>
-                                </li>
-                                <li>
-                                    <a href="/apps/invoice/edit">Edit</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu nav-item">
-                            <button type="button" class="nav-link group"
-                                :class="{ 'active': activeDropdown === 'agencies' }"
-                                @click="activeDropdown === 'agencies' ? activeDropdown = null : activeDropdown = 'agencies'">
-                                <div class="flex items-center">
-
-                                    <svg class="group-hover:!text-primary shrink-0" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path opacity="0.5"
-                                            d="M2.5 6.5C2.5 4.29086 4.29086 2.5 6.5 2.5C8.70914 2.5 10.5 4.29086 10.5 6.5V9.16667C10.5 9.47666 10.5 9.63165 10.4659 9.75882C10.3735 10.1039 10.1039 10.3735 9.75882 10.4659C9.63165 10.5 9.47666 10.5 9.16667 10.5H6.5C4.29086 10.5 2.5 8.70914 2.5 6.5Z"
-                                            stroke="currentColor" stroke-width="1.5" />
-                                        <path opacity="0.5"
-                                            d="M13.5 14.8333C13.5 14.5233 13.5 14.3683 13.5341 14.2412C13.6265 13.8961 13.8961 13.6265 14.2412 13.5341C14.3683 13.5 14.5233 13.5 14.8333 13.5H17.5C19.7091 13.5 21.5 15.2909 21.5 17.5C21.5 19.7091 19.7091 21.5 17.5 21.5C15.2909 21.5 13.5 19.7091 13.5 17.5V14.8333Z"
-                                            stroke="currentColor" stroke-width="1.5" />
-                                        <path
-                                            d="M2.5 17.5C2.5 15.2909 4.29086 13.5 6.5 13.5H8.9C9.46005 13.5 9.74008 13.5 9.95399 13.609C10.1422 13.7049 10.2951 13.8578 10.391 14.046C10.5 14.2599 10.5 14.5399 10.5 15.1V17.5C10.5 19.7091 8.70914 21.5 6.5 21.5C4.29086 21.5 2.5 19.7091 2.5 17.5Z"
-                                            stroke="currentColor" stroke-width="1.5" />
-                                        <path
-                                            d="M13.5 6.5C13.5 4.29086 15.2909 2.5 17.5 2.5C19.7091 2.5 21.5 4.29086 21.5 6.5C21.5 8.70914 19.7091 10.5 17.5 10.5H14.6429C14.5102 10.5 14.4438 10.5 14.388 10.4937C13.9244 10.4415 13.5585 10.0756 13.5063 9.61196C13.5 9.55616 13.5 9.48982 13.5 9.35714V6.5Z"
-                                            stroke="currentColor" stroke-width="1.5" />
-                                    </svg>
-                                    <span
-                                        class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Agencies</span>
-                                </div>
-                                <div class="rtl:rotate-180" :class="{ '!rotate-90': activeDropdown === 'agencies' }">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </div>
-                            </button>
-                            <ul x-cloak x-show="activeDropdown === 'agencies'" x-collapse
-                                class="sub-menu text-gray-500">
-                                <li>
-                                    <a href="/apps/invoice/list">List</a>
-                                </li>
-                                <li>
-                                    <a href="/apps/invoice/add">Add</a>
-                                </li>
-                                <li>
-                                    <a href="/apps/invoice/edit">Edit</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/apps/calendar" class="group">
-                                <div class="flex items-center">
-
-                                    <svg class="group-hover:!text-primary shrink-0" width="20" height="20"
-                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M6.94028 2C7.35614 2 7.69326 2.32421 7.69326 2.72414V4.18487C8.36117 4.17241 9.10983 4.17241 9.95219 4.17241H13.9681C14.8104 4.17241 15.5591 4.17241 16.227 4.18487V2.72414C16.227 2.32421 16.5641 2 16.98 2C17.3958 2 17.733 2.32421 17.733 2.72414V4.24894C19.178 4.36022 20.1267 4.63333 20.8236 5.30359C21.5206 5.97385 21.8046 6.88616 21.9203 8.27586L22 9H2.92456H2V8.27586C2.11571 6.88616 2.3997 5.97385 3.09665 5.30359C3.79361 4.63333 4.74226 4.36022 6.1873 4.24894V2.72414C6.1873 2.32421 6.52442 2 6.94028 2Z"
-                                            fill="currentColor" />
-                                        <path opacity="0.5"
-                                            d="M21.9995 14.0001V12.0001C21.9995 11.161 21.9963 9.66527 21.9834 9H2.00917C1.99626 9.66527 1.99953 11.161 1.99953 12.0001V14.0001C1.99953 17.7713 1.99953 19.6569 3.1711 20.8285C4.34267 22.0001 6.22829 22.0001 9.99953 22.0001H13.9995C17.7708 22.0001 19.6564 22.0001 20.828 20.8285C21.9995 19.6569 21.9995 17.7713 21.9995 14.0001Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                    <span
-                                        class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Calendar</span>
+                                        class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">Properties</span>
                                 </div>
                             </a>
                         </li>
