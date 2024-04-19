@@ -41,8 +41,10 @@
                         </a>
                     </div>
                 </div>
+              
                 <div class="overflow-x-auto">
-                    <table id="categoryTable" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    
+                    <table id="agencyTable" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-4 py-4">image</th>
@@ -51,7 +53,7 @@
                                 <th scope="col" class="px-4 py-4">ZipCode</th>
                                 <th scope="col" class="px-4 py-4">Phone</th>
                                 <th scope="col" class="px-4 py-4">email</th>
-                                <th scope="col" class="px-4 py-4 w-32">N° Agent</th>
+                                <th scope="col" class="px-8 py-4 w-80">Number of agents</th>
                                 <th scope="col" class="px-4 py-3">website</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
@@ -63,7 +65,7 @@
                                 <tr class="border-b dark:border-gray-700" id="{{ 'agency_' . $agency->id }}">
                                     <td>
                                         <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                                            src="{{ asset('storage/avatars/' . $agency->image) }}" alt="User Image"
+                                        {{-- src="{{ asset('storage/' . $agency->media->first()->file_path) }}" alt="Agency Image" --}}
                                             class="h-8 w-auto mr-3">
                                     </td>
                                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -82,8 +84,8 @@
                                     </td>
                                     <td class="px-4 py-3">{{ $agency->email }}</td>
                                     </td>
-                                    <td class="px-4 py-3 w-32">
-                                        {{ $agency->numbre_of_agent }}
+                                    <td class="px-7 py-3 w-80">
+                                        {{ $agency->number_of_agent }}
                                     </td>
                                     <td class="px-4 py-3">
                                         <div class="truncate w-40">
@@ -151,4 +153,64 @@
         </div>
     </section>
     <!-- End block -->
+
+    <script>
+        $(document).ready(function() {
+            $("#agencyTable").on("click", ".deleteButton", function() {
+                const agencyId = $(this).data("id");
+
+                if (agencyId) {
+                    const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "Once deleted, you won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, delete it!",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: `/agent/agencies/${agencyId}`,
+                                type: "DELETE",
+                                headers: {
+                                    'X-CSRF-TOKEN': csrfToken
+                                },
+                                success: function(response) {
+                                    if (response.status === "success") {
+                                        
+                                        Swal.fire({
+                                            title: "Deleted!",
+                                            text: "Agency has been deleted.",
+                                            icon: "success",
+                                            timer: 1500,
+                                        });
+
+                                        $(`#agency_${agencyId}`).remove();
+                                    } else {
+                                        
+                                        Swal.fire({
+                                            title: "Failed!",
+                                            text: "Unable to delete Agency.",
+                                            icon: "error",
+                                        });
+                                    }
+                                },
+                                error: function(error) {
+                                    
+                                    Swal.fire({
+                                        title: "Failed!",
+                                        text: "Unable to delete Agency.",
+                                        icon: "error",
+                                    });
+                                },
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </x-layout.default>

@@ -4,6 +4,7 @@
 <head>
     <meta charset='utf-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'PRODARNA' }}</title>
 
     <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -14,13 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/assets/js/perfect-scrollbar.min.js"></script>
     <script defer src="/assets/js/popper.min.js"></script>
     <script defer src="/assets/js/tippy-bundle.umd.min.js"></script>
-    <script defer src="{{asset('assets/js/sweetalert.min.js')}}"></script>
-    <script src="{{asset('assets/js/easymde.min.js')}}"></script>
-    <script src="{{asset('assets/js/file-upload-with-preview.iife.js')}}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.8/sweetalert2.all.min.js" integrity="sha512-ziDG00v9lDjgmzxhvyX5iztPHpSryN/Ct/TAMPmMmS2O3T1hFPRdrzVCSvwnbPbFNie7Yg5mF7NUSSp5smu7RA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     @vite(['resources/css/app.css'])
     @vite(['node_modules/flowbite/dist/flowbite.min.js'])
 </head>
