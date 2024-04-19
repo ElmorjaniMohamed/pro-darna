@@ -1,611 +1,246 @@
 <x-layout.default>
-    <div x-data="basic">
-        <div class="panel mt-6">
-            <h5 class="font-semibold text-lg dark:text-white-light">Propreties</h5>
-            <table id="myTable" class="whitespace-nowrap table-hover"></table>
+
+    <style>
+
+    </style>
+    <!-- Start block -->
+    <section class="bg-none p-3 sm:p-5 antialiased">
+        <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+            <!-- Start coding here -->
+            <div class="bg-white dark:bg-gray-900 relative shadow-md sm:rounded-lg overflow-hidden">
+                <div
+                    class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+                    <div class="w-full md:w-1/2">
+                        <form class="flex items-center">
+                            <label for="simple-search" class="sr-only">Search</label>
+                            <div class="relative w-full">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                        fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <input type="text" id="simple-search"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                                    placeholder="Search" required="">
+                            </div>
+                        </form>
+                    </div>
+                    <div
+                        class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                        <a href="{{ route('properties.create') }}"
+                            class="flex items-center justify-center text-white bg-primary hover:bg-primary focus:ring-4  font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary dark:hover:bg-primary">
+                            <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path clip-rule="evenodd" fill-rule="evenodd"
+                                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
+                            </svg>
+                            Add Property
+                        </a>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table id="propertiesTable" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-4 py-4">Image</th>
+                                <th scope="col" class="px-4 py-4">Title</th>
+                                <th scope="col" class="px-4 py-4">Description</th>
+                                <th scope="col" class="px-4 py-4">Address</th>
+                                <th scope="col" class="px-4 py-4">Zip Code</th>
+                                <th scope="col" class="px-4 py-4">Price</th>
+                                <th scope="col" class="px-4 py-4">Status</th>
+                                <th scope="col" class="px-4 py-4">Area</th>
+                                <th scope="col" class="px-4 py-4">Bedrooms</th>
+                                <th scope="col" class="px-4 py-4">Bathrooms</th>
+                                <th scope="col" class="px-4 py-4">Garage</th>
+                                <th scope="col" class="px-4 py-4">Agency</th>
+                                <th scope="col" class="px-4 py-4">Property Type</th>
+                                <th scope="col" class="px-4 py-4">Amenities</th>
+                                <th scope="col" class="px-4 py-4">Category</th>
+                                <th scope="col" class="px-4 py-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($properties as $property)
+                                <tr class="border-b dark:border-gray-700" id="{{ 'property_' . $property->id }}">
+                                    <td>
+                                        <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+                                            src="" alt="Property Image">
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $property->title }}
+                                    </td>
+                                    <td
+                                        class="px-4 py-3 font-medium truncate text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="truncate w-56">
+                                            {{ $property->description }}
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="truncate w-56">
+                                            {{ $property->address }}
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="truncate w-20">
+                                            {{ $property->zipCode }}
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">{{ $property->price }}</td>
+                                    <td class="px-4 py-3">
+                                        <div class="truncate w-20">
+                                            {{ $property->status }}
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="truncate w-20">
+                                            {{ $property->area }}
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">{{ $property->nbr_of_bedroom }}</td>
+                                    <td class="px-4 py-3">{{ $property->nbr_of_bathroom }}</td>
+                                    <td class="px-4 py-3">{{ $property->nbr_of_garage }}</td>
+                                    <td class="px-4 py-3">
+                                        <div class="truncate w-56">
+                                            {{ $property->agency->name }}
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="truncate w-32">
+                                        {{ $property->property_type ? $property->property_type->name : 'N/A' }}</td>
+                                        </div>
+                                    <td class="px-4 py-3">
+                                        <ul class="list-disc list-inside">
+                                            @foreach ($property->amenities as $amenity)
+                                                <li>{{ $amenity->name }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                    <td class="px-4 py-3">{{ $property->category->name }}</td>
+                                    <td class="px-4 py-3 flex items-center justify-end">
+                                        <ul class="flex items-center justify-center gap-2">
+                                            <li>
+                                                <a href="{{ route('properties.edit', $property->id) }}"
+                                                    x-tooltip="Edit">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        class="w-4.5 h-4.5 text-success">
+                                                        <path
+                                                            d="M15.2869 3.15178L14.3601 4.07866L5.83882 12.5999L5.83881 12.5999C5.26166 13.1771 4.97308 13.4656 4.7249 13.7838C4.43213 14.1592 4.18114 14.5653 3.97634 14.995C3.80273 15.3593 3.67368 15.7465 3.41556 16.5208L2.32181 19.8021L2.05445 20.6042C1.92743 20.9852 2.0266 21.4053 2.31063 21.6894C2.59466 21.9734 3.01478 22.0726 3.39584 21.9456L4.19792 21.6782L7.47918 20.5844L7.47919 20.5844C8.25353 20.3263 8.6407 20.1973 9.00498 20.0237C9.43469 19.8189 9.84082 19.5679 10.2162 19.2751C10.5344 19.0269 10.8229 18.7383 11.4001 18.1612L11.4001 18.1612L19.9213 9.63993L20.8482 8.71306C22.3839 7.17735 22.3839 4.68748 20.8482 3.15178C19.3125 1.61607 16.8226 1.61607 15.2869 3.15178Z"
+                                                            stroke="currentColor" stroke-width="1.5" />
+                                                        <path opacity="0.5"
+                                                            d="M14.36 4.07812C14.36 4.07812 14.4759 6.04774 16.2138 7.78564C17.9517 9.52354 19.9213 9.6394 19.9213 9.6394M4.19789 21.6777L2.32178 19.8015"
+                                                            stroke="currentColor" stroke-width="1.5" />
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <button data-id="{{ $property->id }}" x-tooltip="Delete"
+                                                    class="deleteButton">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        class="w-5 h-5 text-danger">
+                                                        <path d="M20.5001 6H3.5" stroke="currentColor"
+                                                            stroke-width="1.5" stroke-linecap="round" />
+                                                        <path
+                                                            d="M18.8334 8.5L18.3735 15.3991C18.1965 18.054 18.108 19.3815 17.243 20.1907C16.378 21 15.0476 21 12.3868 21H11.6134C8.9526 21 7.6222 21 6.75719 20.1907C5.89218 19.3815 5.80368 18.054 5.62669 15.3991L5.16675 8.5"
+                                                            stroke="currentColor" stroke-width="1.5"
+                                                            stroke-linecap="round" />
+                                                        <path opacity="0.5" d="M9.5 11L10 16" stroke="currentColor"
+                                                            stroke-width="1.5" stroke-linecap="round" />
+                                                        <path opacity="0.5" d="M14.5 11L14 16" stroke="currentColor"
+                                                            stroke-width="1.5" stroke-linecap="round" />
+                                                        <path opacity="0.5"
+                                                            d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6"
+                                                            stroke="currentColor" stroke-width="1.5" />
+                                                    </svg>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div id="placeResult" class="hidden">
+                        <div class="flex justify-center">
+                            <p class="text-center text-xl text-slate-400 dark:text-slate-200 p-10">
+                                No result found for: <b><span id="searchStringPlaceholder"></span></b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination links -->
+                <div id="paginationContainer" class="mt-4 px-3 pb-3">
+                    {{ $properties->links() }}
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+    <!-- End block -->
+
     <script>
-        document.addEventListener("alpine:init", () => {
-            Alpine.data("basic", () => ({
-                datatable: null,
-                countryList: [{
-                        code: 'AE',
-                        name: 'United Arab Emirates'
-                    },
-                    {
-                        code: 'AR',
-                        name: 'Argentina'
-                    },
-                    {
-                        code: 'AT',
-                        name: 'Austria'
-                    },
-                    {
-                        code: 'AU',
-                        name: 'Australia'
-                    },
-                    {
-                        code: 'BE',
-                        name: 'Belgium'
-                    },
-                    {
-                        code: 'BG',
-                        name: 'Bulgaria'
-                    },
-                    {
-                        code: 'BN',
-                        name: 'Brunei'
-                    },
-                    {
-                        code: 'BR',
-                        name: 'Brazil'
-                    },
-                    {
-                        code: 'BY',
-                        name: 'Belarus'
-                    },
-                    {
-                        code: 'CA',
-                        name: 'Canada'
-                    },
-                    {
-                        code: 'CH',
-                        name: 'Switzerland'
-                    },
-                    {
-                        code: 'CL',
-                        name: 'Chile'
-                    },
-                    {
-                        code: 'CN',
-                        name: 'China'
-                    },
-                    {
-                        code: 'CO',
-                        name: 'Colombia'
-                    },
-                    {
-                        code: 'CZ',
-                        name: 'Czech Republic'
-                    },
-                    {
-                        code: 'DE',
-                        name: 'Germany'
-                    },
-                    {
-                        code: 'DK',
-                        name: 'Denmark'
-                    },
-                    {
-                        code: 'DZ',
-                        name: 'Algeria'
-                    },
-                    {
-                        code: 'EC',
-                        name: 'Ecuador'
-                    },
-                    {
-                        code: 'EG',
-                        name: 'Egypt'
-                    },
-                    {
-                        code: 'ES',
-                        name: 'Spain'
-                    },
-                    {
-                        code: 'FI',
-                        name: 'Finland'
-                    },
-                    {
-                        code: 'FR',
-                        name: 'France'
-                    },
-                    {
-                        code: 'GB',
-                        name: 'United Kingdom'
-                    },
-                    {
-                        code: 'GR',
-                        name: 'Greece'
-                    },
-                    {
-                        code: 'HK',
-                        name: 'Hong Kong'
-                    },
-                    {
-                        code: 'HR',
-                        name: 'Croatia'
-                    },
-                    {
-                        code: 'HU',
-                        name: 'Hungary'
-                    },
-                    {
-                        code: 'ID',
-                        name: 'Indonesia'
-                    },
-                    {
-                        code: 'IE',
-                        name: 'Ireland'
-                    },
-                    {
-                        code: 'IL',
-                        name: 'Israel'
-                    },
-                    {
-                        code: 'IN',
-                        name: 'India'
-                    },
-                    {
-                        code: 'IT',
-                        name: 'Italy'
-                    },
-                    {
-                        code: 'JO',
-                        name: 'Jordan'
-                    },
-                    {
-                        code: 'JP',
-                        name: 'Japan'
-                    },
-                    {
-                        code: 'KE',
-                        name: 'Kenya'
-                    },
-                    {
-                        code: 'KH',
-                        name: 'Cambodia'
-                    },
-                    {
-                        code: 'KR',
-                        name: 'South Korea'
-                    },
-                    {
-                        code: 'KZ',
-                        name: 'Kazakhstan'
-                    },
-                    {
-                        code: 'LA',
-                        name: 'Laos'
-                    },
-                    {
-                        code: 'LK',
-                        name: 'Sri Lanka'
-                    },
-                    {
-                        code: 'MA',
-                        name: 'Morocco'
-                    },
-                    {
-                        code: 'MM',
-                        name: 'Myanmar'
-                    },
-                    {
-                        code: 'MO',
-                        name: 'Macau'
-                    },
-                    {
-                        code: 'MX',
-                        name: 'Mexico'
-                    },
-                    {
-                        code: 'MY',
-                        name: 'Malaysia'
-                    },
-                    {
-                        code: 'NG',
-                        name: 'Nigeria'
-                    },
-                    {
-                        code: 'NL',
-                        name: 'Netherlands'
-                    },
-                    {
-                        code: 'NO',
-                        name: 'Norway'
-                    },
-                    {
-                        code: 'NZ',
-                        name: 'New Zealand'
-                    },
-                    {
-                        code: 'PE',
-                        name: 'Peru'
-                    },
-                    {
-                        code: 'PH',
-                        name: 'Philippines'
-                    },
-                    {
-                        code: 'PK',
-                        name: 'Pakistan'
-                    },
-                    {
-                        code: 'PL',
-                        name: 'Poland'
-                    },
-                    {
-                        code: 'PT',
-                        name: 'Portugal'
-                    },
-                    {
-                        code: 'QA',
-                        name: 'Qatar'
-                    },
-                    {
-                        code: 'RO',
-                        name: 'Romania'
-                    },
-                    {
-                        code: 'RS',
-                        name: 'Serbia'
-                    },
-                    {
-                        code: 'RU',
-                        name: 'Russia'
-                    },
-                    {
-                        code: 'SA',
-                        name: 'Saudi Arabia'
-                    },
-                    {
-                        code: 'SE',
-                        name: 'Sweden'
-                    },
-                    {
-                        code: 'SG',
-                        name: 'Singapore'
-                    },
-                    {
-                        code: 'SK',
-                        name: 'Slovakia'
-                    },
-                    {
-                        code: 'TH',
-                        name: 'Thailand'
-                    },
-                    {
-                        code: 'TN',
-                        name: 'Tunisia'
-                    },
-                    {
-                        code: 'TR',
-                        name: 'Turkey'
-                    },
-                    {
-                        code: 'TW',
-                        name: 'Taiwan'
-                    },
-                    {
-                        code: 'UK',
-                        name: 'Ukraine'
-                    },
-                    {
-                        code: 'UG',
-                        name: 'Uganda'
-                    },
-                    {
-                        code: 'US',
-                        name: 'United States'
-                    },
-                    {
-                        code: 'VN',
-                        name: 'Vietnam'
-                    },
-                    {
-                        code: 'ZA',
-                        name: 'South Africa'
-                    },
-                    {
-                        code: 'BA',
-                        name: 'Bosnia and Herzegovina'
-                    },
-                    {
-                        code: 'BD',
-                        name: 'Bangladesh'
-                    },
-                    {
-                        code: 'EE',
-                        name: 'Estonia'
-                    },
-                    {
-                        code: 'IQ',
-                        name: 'Iraq'
-                    },
-                    {
-                        code: 'LU',
-                        name: 'Luxembourg'
-                    },
-                    {
-                        code: 'LV',
-                        name: 'Latvia'
-                    },
-                    {
-                        code: 'MK',
-                        name: 'North Macedonia'
-                    },
-                    {
-                        code: 'SI',
-                        name: 'Slovenia'
-                    },
-                    {
-                        code: 'PA',
-                        name: 'Panama'
-                    },
-                ],
-                init() {
-                    this.datatable = new simpleDatatables.DataTable('#myTable', {
-                        data: {
-                            headings: ["ID", "User", "Country", "Email", "Progress", "Phone",
-                                "<div class='text-center'>Rate</div>", "Progress", "Status"
-                            ],
-                            data: [
-                                [1, 'Caroline Jensen', '', 'carolinejensen@zidant.com', 39,
-                                    '+1 (821) 447-3782', '', '', ''
-                                ],
-                                [2, 'Celeste Grant', '', 'celestegrant@polarax.com', 32,
-                                    '+1 (838) 515-3408', '', '', ''
-                                ],
-                                [3, 'Tillman Forbes', '', 'tillmanforbes@manglo.com', 26,
-                                    '+1 (969) 496-2892', '', '', ''
-                                ],
-                                [4, 'Daisy Whitley', '', 'daisywhitley@applideck.com', 21,
-                                    '+1 (861) 564-2877', '', '', ''
-                                ],
-                                [5, 'Weber Bowman', '', 'weberbowman@volax.com', 26,
-                                    '+1 (962) 466-3483', '', '', ''
-                                ],
-                                [6, 'Buckley Townsend', '', 'buckleytownsend@orbaxter.com',
-                                    40, '+1 (884) 595-2643', '', '', ''
-                                ],
-                                [7, 'Latoya Bradshaw', '', 'latoyabradshaw@opportech.com',
-                                    24, '+1 (906) 474-3155', '', '', ''
-                                ],
-                                [8, 'Kate Lindsay', '', 'katelindsay@gorganic.com', 24,
-                                    '+1 (930) 546-2952', '', '', ''
-                                ],
-                                [9, 'Marva Sandoval', '', 'marvasandoval@avit.com', 28,
-                                    '+1 (927) 566-3600', '', '', ''
-                                ],
-                                [10, 'Decker Russell', '', 'deckerrussell@quilch.com', 27,
-                                    '+1 (846) 535-3283', '', '', ''
-                                ],
-                                [11, 'Odom Mills', '', 'odommills@memora.com', 34,
-                                    '+1 (995) 525-3402', '', '', ''
-                                ],
-                                [12, 'Sellers Walters', '', 'sellerswalters@zorromop.com',
-                                    28, '+1 (830) 430-3157', '', '', ''
-                                ],
-                                [13, 'Wendi Powers', '', 'wendipowers@orboid.com', 31,
-                                    '+1 (863) 457-2088', '', '', ''
-                                ],
-                                [14, 'Sophie Horn', '', 'sophiehorn@snorus.com', 22,
-                                    '+1 (885) 418-3948', '', '', ''
-                                ],
-                                [15, 'Levine Rodriquez', '', 'levinerodriquez@xth.com', 27,
-                                    '+1 (999) 565-3239', '', '', ''
-                                ],
-                                [16, 'Little Hatfield', '', 'littlehatfield@comtract.com',
-                                    33, '+1 (812) 488-3011', '', '', ''
-                                ],
-                                [17, 'Larson Kelly', '', 'larsonkelly@zidant.com', 20,
-                                    '+1 (892) 484-2162', '', '', ''
-                                ],
-                                [18, 'Kendra Molina', '', 'kendramolina@sureplex.com', 31,
-                                    '+1 (920) 528-3330', '', '', ''
-                                ],
-                                [19, 'Ebony Livingston', '', 'ebonylivingston@danja.com',
-                                    33, '+1 (970) 591-3039', '', '', ''
-                                ],
-                                [20, 'Kaufman Rush', '', 'kaufmanrush@euron.com', 39,
-                                    '+1 (924) 463-2934', '', '', ''
-                                ],
-                                [21, 'Frank Hays', '', 'frankhays@illumity.com', 31,
-                                    '+1 (930) 577-2670', '', '', ''
-                                ],
-                                [22, 'Carmella Mccarty', '', 'carmellamccarty@sybixtex.com',
-                                    21, '+1 (876) 456-3218', '', '', ''
-                                ],
-                                [23, 'Massey Owen', '', 'masseyowen@zedalis.com', 40,
-                                    '+1 (917) 567-3786', '', '', ''
-                                ],
-                                [24, 'Lottie Lowery', '', 'lottielowery@dyno.com', 36,
-                                    '+1 (912) 539-3498', '', '', ''
-                                ],
-                                [25, 'Addie Luna', '', 'addieluna@multiflex.com', 32,
-                                    '+1 (962) 537-2981', '', '', ''
-                                ],
-                            ]
-                        },
-                        searchable: false,
-                        perPage: 10,
-                        perPageSelect: [10, 20, 30, 50, 100],
-                        columns: [{
-                                select: 0,
-                                render: (data, cell, row) => {
-                                    return `<strong class="text-info">#${ data}</strong>`;
+        $(document).ready(function() {
+            $("#agencyTable").on("click", ".deleteButton", function() {
+                const agencyId = $(this).data("id");
+
+                if (agencyId) {
+                    const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "Once deleted, you won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, delete it!",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: `/agent/agencies/${agencyId}`,
+                                type: "DELETE",
+                                headers: {
+                                    'X-CSRF-TOKEN': csrfToken
                                 },
-                            },
-                            {
-                                select: 1,
-                                render: (data, cell, row) => {
-                                    return `<div class="flex items-center gap-2">
-                                                <img src="/assets/images/profile-${this.getRandomNumber(1, 34)}.jpeg" class="w-9 h-9 rounded-full max-w-none" alt="user-profile" />
-                                                <div class="font-semibold">${ data }</div>
-                                        </div>`
-                                },
-                            },
-                            {
-                                select: 2,
-                                render: (data, cell, row) => {
-                                    return `<div class="flex items-center gap-2">
-                                            <img width="24" src="/assets/images/flags/${this.getCountry().code}.svg" class="max-w-none" alt="user profile" />
-                                            <div>${ this.getCountry().name }</div>
-                                        </div>`
-                                },
-                                sortable: false,
-                            },
-                            {
-                                select: 3,
-                                render: (data, cell, row) => {
-                                    return `<a href="mailto:${data}" class="text-primary hover:underline">${ data }</a>`
-                                },
-                            },
-                            {
-                                select: 4,
-                                render: (data, cell, row) => {
-                                    return `<div class="w-4/5 min-w-[100px] h-2.5 bg-[#ebedf2] dark:bg-dark/40 rounded-full flex">
-                                            <div class="h-2.5 rounded-full rounded-bl-full text-center text-white text-xs bg-${this.randomStatusColor()}" style="width:${this.getRandomNumber(15, 100)}%"></div>
-                                        </div>`
-                                },
-                                sortable: false,
-                            },
-                            {
-                                select: 6,
-                                render: (data, cell, row) => {
-                                    let str =
-                                        '<div class="flex items-center justify-center text-warning">';
-                                    for (let i = 0; i < this.getRandomNumber(1,
-                                        5); i++) {
-                                        str += `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-warning">
-                                                <path d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z" stroke="currentColor" stroke-width="1.5" />
-                                            </svg>`;
+                                success: function(response) {
+                                    if (response.status === "success") {
+
+                                        Swal.fire({
+                                            title: "Deleted!",
+                                            text: "Agency has been deleted.",
+                                            icon: "success",
+                                            timer: 1500,
+                                        });
+
+                                        $(`#agency_${agencyId}`).remove();
+                                    } else {
+
+                                        Swal.fire({
+                                            title: "Failed!",
+                                            text: "Unable to delete Agency.",
+                                            icon: "error",
+                                        });
                                     }
-                                    str += '</div>';
-                                    return str;
                                 },
-                                sortable: false,
-                            },
-                            {
-                                select: 7,
-                                render: (data, cell, row) => {
-                                    return `<div style="width: 150px" class="overflow-hidden"> <div class="progress-chart"></div></div>`
+                                error: function(error) {
+
+                                    Swal.fire({
+                                        title: "Failed!",
+                                        text: "Unable to delete Agency.",
+                                        icon: "error",
+                                    });
                                 },
-                                sortable: false,
-                            },
-                            {
-                                select: 8,
-                                render: (data, cell, row) => {
-                                    return `<span class="badge badge-outline-${this.randomStatusColor()}">${ this.randomStatus() }</span>`
-                                },
-                                sortable: false,
-                            },
-                        ],
-                        firstLast: true,
-                        firstText: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        lastText: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        prevText: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        nextText: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>',
-                        labels: {
-                            perPage: "{select}"
-                        },
-                        layout: {
-                            top: "{search}",
-                            bottom: "{info}{select}{pager}",
-                        },
+                            });
+                        }
                     });
-
-                    this.datatable.on('datatable.sort', () => {
-                        this.initChart();
-                    });
-
-                    this.datatable.on('datatable.page', () => {
-                        this.initChart();
-                    });
-
-                    this.datatable.on('datatable.perpage', () => {
-                        this.initChart();
-                    });
-
-                    setTimeout(() => {
-                        this.initChart();
-                    }, 300);
-
-                },
-
-                initChart() {
-                    const ele = document.querySelectorAll('.progress-chart');
-                    let chart = [];
-                    for (let i = 0; i < ele.length; i++) {
-                        ele[i].innerHTML = '';
-                        chart[i] = new ApexCharts(ele[i], this.chart_options);
-                        chart[i].render();
-                    }
-                },
-
-                get chart_options() {
-                    let option = {
-                        series: [{
-                            data: [21, 9, 36, 12, 44, 25, 59]
-                        }],
-                        chart: {
-                            type: 'line',
-                            height: 30,
-                            sparkline: {
-                                enabled: true
-                            }
-                        },
-                        stroke: {
-                            curve: 'smooth',
-                            width: 2
-                        },
-                        markers: {
-                            size: [4, 7],
-                            strokeWidth: 0
-                        },
-                        colors: [this.randomColor()],
-                        grid: {
-                            padding: {
-                                top: 5,
-                                bottom: 5
-                            }
-                        },
-                        tooltip: {
-                            x: {
-                                show: false
-                            },
-                            y: {
-                                title: {
-                                    formatter: () => {
-                                        return '';
-                                    },
-                                },
-                            },
-                        },
-                    };
-                    return option;
-                },
-
-                randomColor() {
-                    const color = ['#4361ee', '#805dca', '#00ab55', '#e7515a', '#e2a03f', '#2196f3'];
-                    const random = Math.floor(Math.random() * color.length);
-                    return color[random];
-                },
-
-                randomStatusColor() {
-                    const color = ['primary', 'secondary', 'success', 'danger', 'warning', 'info'];
-                    const random = Math.floor(Math.random() * color.length);
-                    return color[random];
-                },
-
-                randomStatus() {
-                    const status = ['PAID', 'APPROVED', 'FAILED', 'CANCEL', 'SUCCESS', 'PENDING',
-                        'COMPLETE'
-                    ];
-                    const random = Math.floor(Math.random() * status.length);
-                    return status[random];
-                },
-
-                getRandomNumber(min, max) {
-                    return Math.floor(Math.random() * (max - min + 1)) + min;
-                },
-
-                getCountry() {
-                    const random = Math.floor(Math.random() * this.countryList.length);
-                    return this.countryList[random];
-                },
-            }));
+                }
+            });
         });
     </script>
 </x-layout.default>
