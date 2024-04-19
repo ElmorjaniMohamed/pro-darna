@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePropertyAmenityRequest;
 use App\Http\Requests\UpdatePropertyAmenityRequest;
 use App\Repositories\PropertyAmenityRepositoryInterface;
+use App\Models\PropertyAmenity;
 
 class PropertyAmenityController extends Controller
 {
@@ -18,7 +19,12 @@ class PropertyAmenityController extends Controller
     public function index()
     {
         $propertyAmenities = $this->propertyAmenityRepository->all();
-        return view('propertyAmenities.index', compact('propertyAmenities'));
+        return view('admin.propertyAmenities.index', compact('propertyAmenities'));
+    }
+
+    public function create()
+    {
+        return view('admin.propertyAmenities.create');
     }
 
     public function store(StorePropertyAmenityRequest $request)
@@ -27,15 +33,25 @@ class PropertyAmenityController extends Controller
         return redirect()->route('propertyAmenities.index');
     }
 
+    public function edit(PropertyAmenity $propertyAmenity)
+    {
+        return view('admin.propertyAmenities.edit', compact('propertyAmenity'));
+    }
+
     public function update(UpdatePropertyAmenityRequest $request, int $id)
     {
         $this->propertyAmenityRepository->update($request->validated(), $id);
         return redirect()->route('propertyAmenities.index');
     }
 
-    public function destroy(int $id)
+    public function destroy($id)
     {
-        $this->propertyAmenityRepository->delete($id);
-        return redirect()->route('propertyAmenities.index');
+        try {
+            $this->propertyAmenityRepository->delete($id);
+            return response()->json(['status' => 'success']);
+            
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => 'Failed to delete category: ' . $e->getMessage()], 500);
+        }
     }
 }

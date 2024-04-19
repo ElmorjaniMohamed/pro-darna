@@ -20,6 +20,8 @@ use App\Repositories\PropertyTypeRepositoryInterface;
 use App\Repositories\PropertyTypeRepository;
 use App\Repositories\ContactInfoRepositoryInterface;
 use App\Repositories\ContactInfoRepository;
+use App\Repositories\PropertyAmenityRepositoryInterface;
+use App\Repositories\PropertyAmenityRepository;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -38,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PropertyTypeRepositoryInterface::class, PropertyTypeRepository::class);
         $this->app->bind(ContactInfoRepositoryInterface::class, ContactInfoRepository::class);
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(PropertyAmenityRepositoryInterface::class, PropertyAmenityRepository::class);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PropertyType;
 use App\Repositories\PropertyTypeRepositoryInterface;
 use App\Http\Requests\StorePropertyTypeRequest;
 use App\Http\Requests\UpdatePropertyTypeRequest;
@@ -18,7 +19,12 @@ class PropertyTypeController extends Controller
     public function index()
     {
         $propertyTypes = $this->propertyTypeRepository->all();
-        return view('propertyTypes.index', compact('propertyTypes'));
+        return view('admin.propertyTypes.index', compact('propertyTypes'));
+    }
+
+    public function create()
+    {
+        return view('admin.propertyTypes.create');
     }
 
     public function store(StorePropertyTypeRequest $request)
@@ -27,15 +33,25 @@ class PropertyTypeController extends Controller
         return redirect()->route('propertyTypes.index');
     }
 
-    public function update(UpdatePropertyTypeRequest $request, int $id)
+    public function edit(PropertyType $propertyType)
     {
-        $this->propertyTypeRepository->update($request->validated(), $id);
+        return view('admin.propertyTypes.edit', compact('propertyType'));
+    }
+
+    public function update(UpdatePropertyTypeRequest $request, PropertyType $propertyType)
+    {
+        $this->propertyTypeRepository->update($request->validated(), $propertyType->id);
         return redirect()->route('propertyTypes.index');
     }
 
-    public function destroy(int $id)
+    public function destroy($id)
     {
-        $this->propertyTypeRepository->delete($id);
-        return redirect()->route('propertyTypes.index');
+        try {
+            $this->propertyTypeRepository->delete($id);
+            return response()->json(['status' => 'success']);
+            
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => 'Failed to delete category: ' . $e->getMessage()], 500);
+        }
     }
 }
