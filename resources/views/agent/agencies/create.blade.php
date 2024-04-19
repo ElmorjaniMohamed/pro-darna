@@ -10,7 +10,7 @@
             <!-- Modal body -->
             <form class="space-y-5" method="POST" action="{{ route('agencies.store') }}" enctype="multipart/form-data">
                 @csrf
-                @method('post')
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label for="gridName">Name</label>
@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     <label for="gridDescription">Description</label>
-                    <textarea id="mde-autosave" name="description" class="form-input"></textarea>
+                    <textarea id="mde-autosave" name="description" class="form-input" placeholder="Enter Description"></textarea>
                     @error('description')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
@@ -63,9 +63,9 @@
                     </div>
                     <div>
                         <label for="gridNumberOfAgent">Number of Agents</label>
-                        <input id="gridNumberOfAgent" name="numbre_of_agent" type="number"
+                        <input id="gridNumberOfAgent" name="number_of_agent" type="number"
                             placeholder="Enter Number of Agents" class="form-input" />
-                        @error('numbre_of_agent')
+                        @error('number_of_agent')
                             <div class="text-red-500">{{ $message }}</div>
                         @enderror
                     </div>
@@ -90,16 +90,4 @@
         </div>
     </div>
 
-    <!-- script -->
-    <script>
-        const easymde1 = new EasyMDE({
-            element: document.getElementById('mde-autosave'),
-            autosave: {
-                enabled: true,
-                delay: 1000,
-                uniqueId: 'mde-autosave-demo'
-            },
-            initialValue: `Enter Description`,
-        });
-    </script>
 </x-layout.default>

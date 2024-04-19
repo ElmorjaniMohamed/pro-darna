@@ -26,14 +26,14 @@
                     </div>
                     <div
                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        <a href="{{ route('categories.create') }}"
+                        <a href="{{ route('propertyTypes.create') }}"
                             class="flex items-center justify-center text-white bg-primary hover:bg-primary focus:ring-4  font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary dark:hover:bg-primary">
                             <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path clip-rule="evenodd" fill-rule="evenodd"
                                     d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                             </svg>
-                            Add Category
+                            Add Property Type
                         </a>
                     </div>
                 </div>
@@ -50,19 +50,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
-                                <tr class="border-b dark:border-gray-700" id="{{ 'category_' . $category->id }}">
+                            @foreach ($propertyTypes as $type)
+                                <tr class="border-b dark:border-gray-700" id="{{ 'category_' . $type->id }}">
                                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $category->name }}
+                                        {{ $type->name }}
                                     </td>
                                     </td>
-                                    <td class="px-4 py-3 max-w-[12rem] truncate">{{ $category->created_at }}
+                                    <td class="px-4 py-3 max-w-[12rem] truncate">{{ $type->created_at }}
                                     </td>
-                                    <td class="px-4 py-3">{{ $category->updated_at }}</td>
+                                    <td class="px-4 py-3">{{ $type->updated_at }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">
                                         <ul class="flex items-center justify-center gap-2">
                                             <li>
-                                                <a href="{{ route('categories.edit', $category->id) }}"
+                                                <a href="{{ route('categories.edit', $type->id) }}"
                                                     x-tooltip="Edit">
                                                     <svg width="24" height="24" viewBox="0 0 24 24"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <button type="button" data-id="{{ $category->id }}" class="deleteButton">
+                                                <button type="button" data-id="{{ $type->id }}" class="deleteButton">
                                                     <svg width="24" height="24" viewBox="0 0 24 24"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg"
                                                         class="w-5 h-5 text-danger">
@@ -113,7 +113,7 @@
                 </div>
                 <!-- Pagination links -->
                 <div id="paginationContainer" class="mt-4 px-3 pb-3">
-                    {{ $categories->links() }}
+                    {{ $propertyTypes->links() }}
                 </div>
             </div>
         </div>
