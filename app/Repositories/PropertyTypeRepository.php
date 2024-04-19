@@ -9,9 +9,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PropertyTypeRepository implements PropertyTypeRepositoryInterface
 {
-    public function all(): LengthAwarePaginator
+    public function all()
     {
-        return PropertyType::paginate();
+        return PropertyType::paginate(6);
     }
     public function create(array $attributes): Model
     {

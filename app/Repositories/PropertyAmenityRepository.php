@@ -2,20 +2,18 @@
 
 namespace App\Repositories;
 
-use App\Models\PropertyType;
+use App\Models\PropertyAmenity;
 use Illuminate\Database\Eloquent\Model;
-use App\Repositories\PropertyTypeRepositoryInterface;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class PropertyAmenityRepository implements PropertyAmenityRepositoryInterface
 {
-    public function all(): LengthAwarePaginator
+    public function all()
     {
-        return PropertyType::paginate();
+        return PropertyAmenity::paginate(6);
     }
     public function create(array $attributes): Model
     {
-        return PropertyType::create($attributes);
+        return PropertyAmenity::create($attributes);
     }
     public function update(array $attributes, int $id): bool
     {
@@ -30,6 +28,6 @@ class PropertyAmenityRepository implements PropertyAmenityRepositoryInterface
 
     protected function find(int $id): ?Model
     {
-        return PropertyType::find($id);
+        return PropertyAmenity::find($id);
     }
 }
