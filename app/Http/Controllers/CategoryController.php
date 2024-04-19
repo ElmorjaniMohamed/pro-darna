@@ -7,6 +7,8 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Repositories\CategoryRepositoryInterface;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class CategoryController extends Controller
 {
@@ -45,23 +47,14 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index');
     }
 
-    public function destroy(int $id): JsonResponse
+    public function destroy($id)
     {
-        if (request()->ajax()) {
-            $category = Category::find($id);
-
-            if ($category) {
-                
-                $this->categoryRepository->delete($id);
-                
-                return response()->json(['status' => 'success', 'message' => 'Category deleted successfully']);
-            } else {
-                return response()->json(['status' => 'error', 'message' => 'Category not found'], 404);
-            }
-        } else {
-            return response()->json(['status' => 'error', 'message' => 'Unauthorized'], 401);
+        try {
+            $this->categoryRepository->delete($id);
+            return response()->json(['status' => 'success']);
+            
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => 'Failed to delete category: ' . $e->getMessage()], 500);
         }
     }
-
-
 }

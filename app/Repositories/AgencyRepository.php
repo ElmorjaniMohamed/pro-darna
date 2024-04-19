@@ -8,7 +8,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class AgencyRepository implements AgencyRepositoryInterface
 {
-    public function all(): LengthAwarePaginator
+    public function all()
     {
         return Agency::paginate(6);
     }
@@ -27,15 +27,10 @@ class AgencyRepository implements AgencyRepositoryInterface
         return false;
     }
 
-    public function delete(int $id): bool
+    public function delete(int $id)
     {
-        $agency = $this->find($id);
-        
-        if ($agency) 
-        {
-            return $agency->delete();
-        }
-        return false;
+        $category = Agency::findOrFail($id);
+        return $category->delete();
     }
 
     protected function find(int $id): ?Model

@@ -82,9 +82,14 @@ class AgencyController extends Controller
         return redirect()->route('agencies.index');
     }
 
-    public function destroy(int $id)
+    public function destroy($id)
     {
-        $this->agencyRepository->delete($id);
-        return redirect()->route('agencies.index');
+        try {
+            $this->agencyRepository->delete($id);
+            return response()->json(['status' => 'success']);
+            
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => 'Failed to delete agency: ' . $e->getMessage()], 500);
+        }
     }
 }
