@@ -8,8 +8,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface AgencyRepositoryInterface
 {
-    public function all(): LengthAwarePaginator;
+    public function all();
     public function create(array $attributes): Model;
-    public function update(array $attributes, int $id): bool;
-    public function delete(int $id): bool;
+    public function update(array $attributes, int $id);
+    public function delete(int $id);
 }
