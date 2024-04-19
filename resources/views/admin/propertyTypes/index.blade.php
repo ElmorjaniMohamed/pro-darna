@@ -33,12 +33,12 @@
                                 <path clip-rule="evenodd" fill-rule="evenodd"
                                     d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                             </svg>
-                            Add Property Type
+                            Add Type
                         </a>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
-                    <table id="categoryTable" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <table id="typeTable" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-4 py-4">name</th>
@@ -51,7 +51,7 @@
                         </thead>
                         <tbody>
                             @foreach ($propertyTypes as $type)
-                                <tr class="border-b dark:border-gray-700" id="{{ 'category_' . $type->id }}">
+                                <tr class="border-b dark:border-gray-700" id="{{ 'type_' . $type->id }}">
                                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $type->name }}
                                     </td>
@@ -62,7 +62,7 @@
                                     <td class="px-4 py-3 flex items-center justify-end">
                                         <ul class="flex items-center justify-center gap-2">
                                             <li>
-                                                <a href="{{ route('categories.edit', $type->id) }}"
+                                                <a href="{{ route('propertyTypes.edit', $type->id) }}"
                                                     x-tooltip="Edit">
                                                     <svg width="24" height="24" viewBox="0 0 24 24"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -122,10 +122,10 @@
 
     <script>
         $(document).ready(function() {
-            $("#categoryTable").on("click", ".deleteButton", function() {
-                const categoryId = $(this).data("id");
+            $("#typeTable").on("click", ".deleteButton", function() {
+                const typeId = $(this).data("id");
 
-                if (categoryId) {
+                if (typeId) {
                     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
                     Swal.fire({
@@ -139,7 +139,7 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
-                                url: `/admin/categories/${categoryId}`,
+                                url: `/admin/propertyTypes/${typeId}`,
                                 type: "DELETE",
                                 headers: {
                                     'X-CSRF-TOKEN': csrfToken
@@ -155,7 +155,7 @@
                                         });
 
                                         // Optionally, you can also remove the category from the UI
-                                        $(`#category_${categoryId}`).remove();
+                                        $(`#type_${typeId}`).remove();
                                     } else {
                                         // Error deleting category
                                         Swal.fire({
