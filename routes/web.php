@@ -53,3 +53,5 @@ Route::prefix('agent')->group(function () {
     Route::resource('agencies', AgencyController::class);
     Route::resource('properties', PropertyController::class);
 });
+
+Route::delete('/property/{property}/media/{media}', [PropertyController::class, 'removeImage'])->name('property.media.remove');
