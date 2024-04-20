@@ -7,15 +7,7 @@
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                     Add Property</h3>
             </div>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            
             <form class="space-y-5" method="POST" action="{{ route('properties.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">

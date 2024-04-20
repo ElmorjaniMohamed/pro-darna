@@ -28,6 +28,15 @@
                             </div>
                         </form>
                     </div>
+                    @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                     <div
                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
                         <a href="{{ route('properties.create') }}"
@@ -186,10 +195,10 @@
 
     <script>
         $(document).ready(function() {
-            $("#agencyTable").on("click", ".deleteButton", function() {
-                const agencyId = $(this).data("id");
+            $("#propertiesTable").on("click", ".deleteButton", function() {
+                const propertyId = $(this).data("id");
 
-                if (agencyId) {
+                if (propertyId) {
                     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
                     Swal.fire({
@@ -203,7 +212,7 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
-                                url: `/agent/agencies/${agencyId}`,
+                                url: `/agent/properties/${propertyId}`,
                                 type: "DELETE",
                                 headers: {
                                     'X-CSRF-TOKEN': csrfToken
@@ -218,7 +227,7 @@
                                             timer: 1500,
                                         });
 
-                                        $(`#agency_${agencyId}`).remove();
+                                        $(`#property_${propertyId}`).remove();
                                     } else {
 
                                         Swal.fire({
