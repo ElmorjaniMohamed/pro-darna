@@ -6,12 +6,14 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerifyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PropertyAmenityController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\PropertyTypeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+
 
 Route::view('/admin', 'admin.index');
 Route::get('/', [HomeController::class, 'index'])->middleware('verified')->name('home');
@@ -44,6 +46,7 @@ Route::post('/reset-password', [ResetPasswordController::class, 'submitResetPass
 Route::prefix('admin')->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('propertyTypes', PropertyTypeController::class);
+    Route::resource('propertyAmenities', PropertyAmenityController::class);
 });
 
 Route::prefix('agent')->group(function () {
