@@ -69,7 +69,7 @@
                                 <tr class="border-b dark:border-gray-700" id="{{ 'property_' . $property->id }}">
                                     <td>
                                         <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                                            src="" alt="Property Image">
+                                            src="{{ asset('storage/'. $property->media->first()->file_path) }}" alt="Property Image">
                                     </td>
                                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $property->title }}
@@ -111,7 +111,7 @@
                                     </td>
                                     <td class="px-4 py-3">
                                         <div class="truncate w-32">
-                                        {{ $property->property_type ? $property->property_type->name : 'N/A' }}</td>
+                                        {{ $property->propertyType->name }}</td>
                                         </div>
                                     <td class="px-4 py-3">
                                         <ul class="list-disc list-inside">

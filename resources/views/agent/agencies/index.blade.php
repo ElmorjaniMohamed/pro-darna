@@ -64,8 +64,8 @@
                             @foreach ($agencies as $agency)
                                 <tr class="border-b dark:border-gray-700" id="{{ 'agency_' . $agency->id }}">
                                     <td>
-                                        <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                                        {{-- src="{{ asset('storage/' . $agency->media->first()->file_path) }}" alt="Agency Image" --}}
+                                        <img class="w-10 h-10 p-1 rounded-full ring-2 ring-secondary dark:ring-primary"
+                                        src="{{ asset('storage/' . $agency->media->first()->file_path) }}" alt="Agency Image"
                                             class="h-8 w-auto mr-3">
                                     </td>
                                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
