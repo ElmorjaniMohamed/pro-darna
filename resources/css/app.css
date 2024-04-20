@@ -26,7 +26,7 @@
 @import 'flatpickr.css';
 
 /* file upload with preview */
-/* @import 'file-upload-preview.css'; */
+@import 'file-upload-preview.css';
 
 /* markdown-editor */
 @import 'markdown-editor.css';
