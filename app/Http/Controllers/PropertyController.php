@@ -10,6 +10,8 @@ use App\Models\Agency;
 use App\Models\PropertyType;
 use App\Models\PropertyAmenity;
 use App\Models\Category;
+use App\Models\Media;
+use Illuminate\Support\Facades\Storage;
 
 class PropertyController extends Controller
 {
@@ -49,7 +51,7 @@ class PropertyController extends Controller
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
                 $path = $image->storeAs('images/properties', $filename, 'public');
 
                 // Create a new media record for each image
@@ -66,12 +68,33 @@ class PropertyController extends Controller
 
     public function edit(Property $property)
     {
-        return view('agent.properties.edit', compact('property'));
+        $agencies = Agency::all();
+        $propertyTypes = PropertyType::all();
+        $propertyAmenities = PropertyAmenity::all();
+        $categories = Category::all();
+        return view('agent.properties.edit', compact('property', 'agencies', 'propertyTypes', 'propertyAmenities', 'categories'));
     }
 
     public function update(UpdatePropertyRequest $request, int $id)
     {
         $this->propertyRepository->update($request->validated(), $id);
+
+        $property = Property::find($id);
+        
+        if ($request->hasFile('images')) {
+
+            foreach ($request->file('images') as $image) {
+                $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $path = $image->storeAs('images/properties', $filename, 'public');
+
+                $property->media()->create([
+                    'file_name' => $filename,
+                    'file_type' => $image->getClientMimeType(),
+                    'file_path' => $path,
+                ]);
+            }
+        }
+
         return redirect()->route('properties.index');
     }
 
@@ -79,5 +102,19 @@ class PropertyController extends Controller
     {
         $this->propertyRepository->delete($id);
         return redirect()->route('properties.index');
+    }
+
+    public function removeImage(Property $property, Media $media)
+    {
+        // Check if the media belongs to the property
+        if ($property->media->contains($media)) {
+            // Delete the media
+            $media->delete();
+
+            // Delete the image file
+            Storage::delete($media->file_path);
+        }
+
+        return response()->json(['message' => 'Image removed successfully']);
     }
 }
