@@ -7,8 +7,16 @@
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                     Add Property</h3>
             </div>
-
-            <form class="space-y-5" method="POST" action="{{route('properties.store')}}" enctype="multipart/form-data">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form class="space-y-5" method="POST" action="{{ route('properties.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -84,9 +92,13 @@
                         </select>
                     </div>
                     <div>
-                        <label for="category_id">Category ID</label>
-                        <input id="category_id" name="category_id" type="number" placeholder="Enter Category ID"
-                            class="form-input" required />
+                        <label for="category_id">Category</label>
+                        <select id="category_id" name="category_id" class="form-select" required>
+                            <option value="">Choose Category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="relative">
                         <label for="property_amenities">Property
@@ -127,8 +139,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="custom-file-container" data-upload-id="myImages">
+                <div>
                     <label for="image" class="form-label">Images</label>
+                    <input type="file" name="images[]" class="form-input py-0" multiple>
                 </div>
                 <button type="submit" class="btn btn-primary !mt-6">Submit</button>
             </form>
