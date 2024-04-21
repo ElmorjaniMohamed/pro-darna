@@ -47,7 +47,7 @@
                     </div>
                     <div>
                         <label for="area">Area</label>
-                        <input id="area" name="area" type="text" placeholder="Enter Area" class="form-input"
+                        <input id="area" name="area" type="text" placeholder="Enter The Area in (m²)" class="form-input"
                             required />
                     </div>
                     <div>

@@ -125,7 +125,7 @@
                                     <td class="px-4 py-3">
                                         <ul class="list-disc list-inside">
                                             @foreach ($property->amenities as $amenity)
-                                                <li>{{ $amenity->name }}</li>
+                                                <li class="w-56">{{ $amenity->name }}</li>
                                             @endforeach
                                         </ul>
                                     </td>
