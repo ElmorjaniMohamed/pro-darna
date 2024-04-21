@@ -32,7 +32,6 @@ class RoleSeeder extends Seeder
         // Define roles
         $roles = [
             'admin' => ['create-properties', 'create-agencies', 'send-message', 'update-properties', 'delete-properties', 'update-agencies', 'delete-agencies'],
-            'agent' => ['create-properties', 'create-agencies', 'update-properties', 'delete-properties', 'update-agencies', 'delete-agencies']
         ];
 
         foreach ($roles as $roleName => $rolePermissions) {
@@ -43,8 +42,7 @@ class RoleSeeder extends Seeder
 
         // Create users
         $users = [
-            ['name' => 'Admin', 'email' => 'admin@gmail.com', 'password' => bcrypt('admin'), 'role' => 'admin'],
-            ['name' => 'Agent', 'email' => 'agent@gmail.com', 'password' => bcrypt('agent'), 'role' => 'agent']
+            ['name' => 'Admin', 'email' => 'admin@gmail.com', 'password' => bcrypt('Admin00@@'), 'role' => 'admin'],
         ];
 
         foreach ($users as $user) {
@@ -52,6 +50,11 @@ class RoleSeeder extends Seeder
                 ['email' => $user['email']],
                 ['name' => $user['name'], 'password' => $user['password']]
             );
+
+            if($user['role'] === 'admin'){
+                $newUser->markEmailAsVerified();
+            }
+            
             $role = Role::where('name', $user['role'])->first();
             if ($role) {
                 $newUser->roles()->attach($role);
