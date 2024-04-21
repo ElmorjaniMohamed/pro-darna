@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerifyController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyAmenityController;
 use App\Http\Controllers\PropertyController;
@@ -16,7 +17,8 @@ use App\Http\Controllers\Auth\LogoutController;
 
 
 Route::view('/admin', 'admin.index');
-Route::get('/', [HomeController::class, 'index'])->middleware('verified')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/verify', [VerifyController::class, 'verify'])->name('verification.notice');
 
 // Email verification routes

@@ -51,7 +51,7 @@
                     </button>
                     <ul x-cloak x-show="activeDropdown === 'dashboard'" x-collapse class="sub-menu text-gray-500">
                         <li>
-                            <a href="/analytics">Analytics</a>
+                            <a href="{{route('dashboard')}}">Analytics</a>
                         </li>
                     </ul>
                 </li>
