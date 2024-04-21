@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
 use App\Http\Requests\LoginUserRequest;
 use App\Services\AuthInterface;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -25,16 +27,15 @@ class LoginController extends Controller
     {
         $credentials = $request->validated();
 
-        $validatedData['password'] = \Hash::make($credentials['password']);
+        $user = User::where('email', $credentials['email'])->first();
 
-        if ($this->authService->login($credentials)) {
-            return redirect()->intended(route('home'))->withSuccess('Login successfully!');
+        if ($user && Hash::check($credentials['password'], $user->password)) {
+            Auth::login($user);
+            return redirect()->route('home');
         }
 
-        $request->user()->sendFailedLoginNotification($credentials);
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+        throw ValidationException::withMessages([
+            'email' => __('auth.failed'),
         ]);
     }
 
