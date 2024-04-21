@@ -32,7 +32,6 @@ class RoleSeeder extends Seeder
         // Define roles
         $roles = [
             'admin' => ['create-properties', 'create-agencies', 'send-message', 'update-properties', 'delete-properties', 'update-agencies', 'delete-agencies'],
-            'user' => ['send-message'],
             'agent' => ['create-properties', 'create-agencies', 'update-properties', 'delete-properties', 'update-agencies', 'delete-agencies']
         ];
 
@@ -45,7 +44,6 @@ class RoleSeeder extends Seeder
         // Create users
         $users = [
             ['name' => 'Admin', 'email' => 'admin@gmail.com', 'password' => bcrypt('admin'), 'role' => 'admin'],
-            ['name' => 'User', 'email' => 'user@gmail.com', 'password' => bcrypt('user'), 'role' => 'user'],
             ['name' => 'Agent', 'email' => 'agent@gmail.com', 'password' => bcrypt('agent'), 'role' => 'agent']
         ];
 
