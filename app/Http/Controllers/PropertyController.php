@@ -98,10 +98,23 @@ class PropertyController extends Controller
         return redirect()->route('properties.index');
     }
 
-    public function destroy(int $id)
+    public function destroy($id)
     {
-        $this->propertyRepository->delete($id);
-        return redirect()->route('properties.index');
+        try {
+            $property = Property::find($id);
+
+            foreach ($property->media as $media) {
+                Storage::delete($media->file_path);
+                $media->delete();
+            }
+
+            $property->delete();
+
+            return response()->json(['status' => 'success']);
+            
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => 'Failed to delete property: ' . $e->getMessage()], 500);
+        }
     }
 
     public function removeImage(Property $property, Media $media)

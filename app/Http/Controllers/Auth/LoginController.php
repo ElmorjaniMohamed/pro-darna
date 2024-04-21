@@ -25,6 +25,8 @@ class LoginController extends Controller
     {
         $credentials = $request->validated();
 
+        $validatedData['password'] = \Hash::make($credentials['password']);
+
         if ($this->authService->login($credentials)) {
             return redirect()->intended(route('home'))->withSuccess('Login successfully!');
         }
