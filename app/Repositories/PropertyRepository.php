@@ -35,8 +35,9 @@ class PropertyRepository implements PropertyRepositoryInterface
         return false;
     }
 
-    protected function find(int $id): ?Model
+    protected function find(int $id)
     {
-        return Property::find($id);
+        $category = Property::findOrFail($id);
+        return $category->delete();
     }
 }
