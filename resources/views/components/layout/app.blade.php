@@ -17,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Plugins CSS (All Plugins Files) -->
 
     <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css" />
@@ -51,7 +54,7 @@
                                     class="hidden lg:flex flex-wrap items-center font-lora text-[16px] xl:text-[18px] leading-none text-black">
                                     <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
 
-                                        <a href="#"
+                                        <a href="{{ route('home') }}"
                                             class="sticky-dark transition-all text-white hover:text-secondary">Home</a>
                                     </li>
                                     <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
@@ -62,7 +65,7 @@
                                     </li>
                                     <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
 
-                                        <a href="#"
+                                        <a href="{{ route('properties') }}"
                                             class="sticky-dark transition-all text-white hover:text-secondary">Properties</a>
 
                                     </li>
@@ -115,7 +118,7 @@
 
                                                 </ul>
                                             </li>
-                                            @if(Auth::check() && Auth::user()->hasRole('agent'))
+                                            @if (Auth::check() && Auth::user()->hasRole('agent'))
                                                 <li>
                                                     <a href="{{ route('agencies.create') }}"
                                                         class="sticky-btn before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-white before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto hover:text-primary before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-secondary after:rounded-md after:transition-all">Add
@@ -137,9 +140,9 @@
                                         <a href="{{ route('register') }}"
                                             class="sticky-btn before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-white before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto hover:text-primary before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-secondary after:rounded-md after:transition-all">Get
                                             started</a>
-                                            @endauth
-                                    @endif
-                                
+                                    @endauth
+                                @endif
+
                             </nav>
                         </div>
                     </div>
@@ -398,6 +401,50 @@
             @yield('content')
         </main>
         <!-- Footer Start -->
+
+        <!-- News Letter section start -->
+        <section class="py-[80px] lg:p-[90px] bg-primary relative">
+            <div class="container">
+                <div class="grid grid-cols-1">
+                    <div class="col-span">
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="w-full lg:w-auto">
+                                <h3
+                                    class="font-lora text-white text-[24px] sm:text-[30px] xl:text-[36px] leading-[1.277] mb-[10px]">
+                                    Are you a Home Owner?</h3>
+                                <p class="text-secondary leading-[1.5] tracking-[0.03em] mb-10">Put your email address
+                                    and get
+                                    listed.</p>
+                                <form id="mc-form" action="#" class="relative w-full">
+                                    <input id="mc-email"
+                                        class="font-light text-white leading-[1.75] opacity-100 border border-secondary w-full lg:w-[395px] xl:w-[495px] h-[60px] rounded-[10px] py-[15px] pl-[15px] pr-[15px] sm:pr-[135px] focus:border-white focus:outline-none border-opacity-60 placeholder:text-[#E2E2E2] bg-transparent"
+                                        type="text" placeholder="Enter your email here...">
+                                    <button id="mc-submit" type="submit"
+                                        class="text-white font-medium text-[16px] leading-none tracking-[0.02em] bg-secondary py-[17px] px-[20px] mt-5 sm:mt-0 rounded-[10px] hover:bg-white hover:text-primary transition-all sm:absolute sm:right-[4px] sm:top-1/2 sm:-translate-y-1/2">Get
+                                        Listed</button>
+                                </form>
+                                <!-- mailchimp-alerts Start -->
+                                <div class="mailchimp-alerts text-centre">
+                                    <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                                    <div class="mailchimp-success text-green-400"></div><!-- mailchimp-success end -->
+                                    <div class="mailchimp-error text-red-600"></div><!-- mailchimp-error end -->
+                                </div>
+                                <!-- mailchimp-alerts end -->
+                            </div>
+                            <div class="w-full hidden lg:block lg:w-auto mt-5 lg:mt-0">
+                                <div class="relative mt-10 md:mt-0 lg:absolute lg:right-0 lg:bottom-0">
+                                    <img class="hero_image lg:max-w-[550px] xl:max-w-[650px] 2xl:max-w-[714px]"
+                                        src="assets/images/newsletter/bg-1.png" width="866" height="879"
+                                        alt="hero image">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- News Letter section End -->
         <footer
             class="footer bg-[#EEEEEE] pt-[80px] lg:pt-[120px] pb-30 md:pb-[80px] lg:pb-[110px] font-normal bg-no-repeat"
             style="background-image: url('assets/images/footer/pattern.png');">
