@@ -3,7 +3,7 @@
          <div
              class="overflow-hidden rounded-md drop-shadow-[0px_0px_5px_rgba(0,0,0,0.1)] bg-[#FFFDFC] text-center transition-all duration-300 hover:-translate-y-[10px]">
              <div class="relative">
-                 <a href="properties-details.html" class="block">
+                 <a href="{{route('properties-details', $property->id)}}" class="block">
                      <img src="{{ asset('storage/' . $property->media->first()->file_path) }}" class="element"
                          loading="lazy" width="370" height="100" alt="Orchid Casel de Paradise.">
                  </a>
@@ -20,10 +20,10 @@
              </div>
 
              <div class="py-[20px] px-[20px] text-left">
-                 <h3><a href="properties-details.html"
+                 <h3><a href="{{route('properties-details', $property->id)}}"
                          class="font-lora leading-tight text-[22px] xl:text-[26px] text-primary hover:text-secondary transition-all font-medium">{{ $property->title }}</a>
                  </h3>
-                 <h4><a href="properties-details.html"
+                 <h4><a href="{{route('properties-details', $property->id)}}"
                          class="font-light text-[14px] leading-[1.75] underline">{{ $property->address }}</a>
                  </h4>
                  <span class="font-light text-sm">Added:

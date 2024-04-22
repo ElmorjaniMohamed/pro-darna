@@ -22,14 +22,14 @@
 
     <!-- Plugins CSS (All Plugins Files) -->
 
-    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/swiper-bundle.min.css')}}" />
 
-    <link rel="stylesheet" href="assets/css/plugins/magnific-popup.css" />
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/magnific-popup.css')}}" />
 
-    <link rel="stylesheet" href="assets/css/plugins/nice-select.css" />
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/nice-select.css')}}" />
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
 </head>
 
@@ -44,10 +44,10 @@
                     <div class="col-span-12">
                         <div class="flex flex-wrap items-center justify-between">
                             <a href="index.html" class="block">
-                                <img class="w-2 h-2 white-logo" src="assets/images/logo/logo-white.svg" loading="lazy"
-                                    width="56" height="46" alt="brand logo">
-                                <img class="w-2 h-2 hidden dark-logo" src="assets/images/logo/logo.svg" loading="lazy"
-                                    width="56" height="46" alt="brand logo">
+                                <img class="w-2 h-2 white-logo" src="{{ asset('assets/images/logo/logo-white.svg') }}"
+                                    loading="lazy" width="56" height="46" alt="brand logo">
+                                <img class="w-2 h-2 hidden dark-logo" src="{{ asset('assets/images/logo/logo.svg') }}"
+                                    loading="lazy" width="56" height="46" alt="brand logo">
                             </a>
                             <nav class="flex flex-wrap items-center justify-between">
                                 <ul
@@ -434,7 +434,7 @@
                             <div class="w-full hidden lg:block lg:w-auto mt-5 lg:mt-0">
                                 <div class="relative mt-10 md:mt-0 lg:absolute lg:right-0 lg:bottom-0">
                                     <img class="hero_image lg:max-w-[550px] xl:max-w-[650px] 2xl:max-w-[714px]"
-                                        src="assets/images/newsletter/bg-1.png" width="866" height="879"
+                                        src="{{asset('assets/images/newsletter/bg-1.png')}}" width="866" height="879"
                                         alt="hero image">
                                 </div>
                             </div>
@@ -452,7 +452,7 @@
                 <div class="grid grid-cols-12 gap-x-[30px] mb-[-30px]">
                     <div class="col-span-12 sm:col-span-6 lg:col-span-4 mb-[30px]">
                         <a href="index.html" class="block mb-[25px]">
-                            <img src="assets/images/logo/logo.svg" width="56" height="46" loading=lazy
+                            <img src="{{asset('assets/images/logo/logo.svg')}}" width="56" height="46" loading=lazy
                                 alt="footer logo">
                         </a>
                         <p class="mb-[5px] xl:mb-[40px] max-w-[270px]">Properties are most budget friendly
@@ -574,19 +574,20 @@
     <!-- JS Vendor, Plugins & Activation Script Files -->
 
     <!-- Vendors JS -->
-    <script src="assets/js/vendor/modernizr-3.11.7.min.js"></script>
-    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="{{ asset('assets/js/vendor/modernizr-3.11.7.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-migrate-3.3.2.min.js') }}"></script>
     <!-- Plugins JS -->
-    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
-    <script src="assets/js/plugins/popper.min.js"></script>
-    <script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/plugins/jquery.ajaxchimp.min.js"></script>
-    <script src="assets/js/plugins/parallax.min.js"></script>
-    <script src="assets/js/plugins/jquery.nice-select.min.js"></script>
+    <script src="{{ asset('assets/js/plugins/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.ajaxchimp.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/parallax.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.nice-select.min.js') }}"></script>
+
 
     <!-- Activation JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="{{asset('assets/js/main.js')}}"></script>
 
 </body>
 
