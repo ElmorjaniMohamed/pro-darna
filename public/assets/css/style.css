@@ -155,6 +155,11 @@ sup {
   height: 14rem;
 }
 
+.element-details {
+  width: 100%;
+  height: 26rem;
+  border-radius: 12px;
+}
 .pagination {
   display: flex;
   justify-content: center;
@@ -3181,14 +3186,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .tab-content.active {
-  display: block;
-}
-
-.properties-tab-content {
-  display: none;
-}
-
-.properties-tab-content.active {
   display: block;
 }
 
