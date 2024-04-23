@@ -79,13 +79,16 @@
                     <!-- swiper-slide end-->
                 </div>
             </div>
-
+            <!-- Hero section start -->
         </div>
+        
+        <!-- Hero section end -->
         <span class="shape-4 absolute -bottom-[100px] left-0 scene" data-relative-input="true">
             <img data-depth="0.1" src="assets/images/hero/shape4.svg" alt="">
         </span>
     </section>
     <!-- Hero section end -->
+
 
     <!-- Popular Properties start -->
     <section class="popular-properties py-[80px] lg:py-[125px]">
@@ -109,7 +112,7 @@
                                 <div
                                     class="overflow-hidden rounded-md drop-shadow-[0px_0px_5px_rgba(0,0,0,0.1)] bg-[#FFFDFC] text-center transition-all duration-300 hover:-translate-y-[10px]">
                                     <div class="relative">
-                                        <a href="{{route('properties-details', $property->id)}}" class="block">
+                                        <a href="{{ route('properties-details', $property->id) }}" class="block">
                                             <img src="{{ asset('storage/' . $property->media->first()->file_path) }}"
                                                 class="element" loading="lazy" width="370" height="100"
                                                 alt="Orchid Casel de Paradise.">
@@ -127,10 +130,10 @@
                                     </div>
 
                                     <div class="py-[20px] px-[20px] text-left">
-                                        <h3><a href="{{route('properties-details', $property->id)}}"
+                                        <h3><a href="{{ route('properties-details', $property->id) }}"
                                                 class="font-lora leading-tight text-[22px] xl:text-[26px] text-primary hover:text-secondary transition-all font-medium">{{ $property->title }}</a>
                                         </h3>
-                                        <h4><a href="{{route('properties-details', $property->id)}}"
+                                        <h4><a href="{{ route('properties-details', $property->id) }}"
                                                 class="font-light text-[14px] leading-[1.75] underline">{{ $property->address }}</a>
                                         </h4>
                                         <span class="font-light text-sm">Added: {{ $property->created_at }}</span>
@@ -345,7 +348,7 @@
                                     <div
                                         class="overflow-hidden rounded-md drop-shadow-[0px_0px_5px_rgba(0,0,0,0.1)] bg-[#FFFDFC] text-center transition-all duration-300 hover:-translate-y-[10px]">
                                         <div class="relative">
-                                            <a href="{{route('properties-details', $property->id)}}" class="block">
+                                            <a href="{{ route('properties-details', $property->id) }}" class="block">
                                                 <img src="{{ asset('storage/' . $property->media->first()->file_path) }}"
                                                     class="element" loading="lazy" width="370" height="100"
                                                     alt="Orchid Casel de Paradise.">
@@ -363,10 +366,10 @@
                                         </div>
 
                                         <div class="py-[20px] px-[20px] text-left">
-                                            <h3><a href="{{route('properties-details', $property->id)}}"
+                                            <h3><a href="{{ route('properties-details', $property->id) }}"
                                                     class="font-lora leading-tight text-[22px] xl:text-[26px] text-primary hover:text-secondary transition-all font-medium">{{ $property->title }}</a>
                                             </h3>
-                                            <h4><a href="{{route('properties-details', $property->id)}}"
+                                            <h4><a href="{{ route('properties-details', $property->id) }}"
                                                     class="font-light text-[14px] leading-[1.75] underline">{{ $property->address }}</a>
                                             </h4>
                                             <span class="font-light text-sm">Added: {{ $property->created_at }}</span>
@@ -475,7 +478,7 @@
                             @endforeach
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -1104,8 +1107,8 @@
                     <a href="blog-grid.html" class="flex flex-wrap items-center text-secondary text-tiny mt-[20px]">View
                         all
                         Post
-                        <svg class="ml-[10px]" width="26" height="11" viewBox="0 0 26 11"
-                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="ml-[10px]" width="26" height="11" viewBox="0 0 26 11" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M20.0877 0.69303L24.2075 5.00849H0V5.99151H24.2075L20.0877 10.307L20.7493 11L26 5.5L20.7493 0L20.0877 0.69303Z"
                                 fill="currentColor"></path>
@@ -1117,8 +1120,8 @@
                 <div class="text-center group mb-[30px]">
                     <div class="relative rounded-[6px_6px_0px_0px]">
                         <a href="agent-details.html">
-                            <img src="assets/images/team/person1.png" class="w-auto h-auto block mx-auto"
-                                loading="lazy" width="215" height="310" alt="Amelia Margaret">
+                            <img src="assets/images/team/person1.png" class="w-auto h-auto block mx-auto" loading="lazy"
+                                width="215" height="310" alt="Amelia Margaret">
                         </a>
                         <ul class="flex flex-col absolute w-full top-[30px] left-0 overflow-hidden">
                             <li
@@ -1172,8 +1175,8 @@
                 <div class="text-center group mb-[30px]">
                     <div class="relative rounded-[6px_6px_0px_0px]">
                         <a href="agent-details.html">
-                            <img src="assets/images/team/person2.png" class="w-auto h-auto block mx-auto"
-                                loading="lazy" width="215" height="310" alt="Stephen Kelvin">
+                            <img src="assets/images/team/person2.png" class="w-auto h-auto block mx-auto" loading="lazy"
+                                width="215" height="310" alt="Stephen Kelvin">
                         </a>
                         <ul class="flex flex-col absolute w-full top-[30px] left-0 overflow-hidden">
                             <li
@@ -1227,8 +1230,8 @@
                 <div class="text-center group mb-[30px]">
                     <div class="relative rounded-[6px_6px_0px_0px]">
                         <a href="agent-details.html">
-                            <img src="assets/images/team/person3.png" class="w-auto h-auto block mx-auto"
-                                loading="lazy" width="215" height="310" alt=" Michael Richard">
+                            <img src="assets/images/team/person3.png" class="w-auto h-auto block mx-auto" loading="lazy"
+                                width="215" height="310" alt=" Michael Richard">
                         </a>
                         <ul class="flex flex-col absolute w-full top-[30px] left-0 overflow-hidden">
                             <li
@@ -1357,6 +1360,4 @@
         </div>
     </section>
     <!-- Blog Section End  -->
-
-    
 @endsection

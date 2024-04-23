@@ -155,6 +155,16 @@ sup {
   height: 14rem;
 }
 
+.element-service{
+  width: 60%;
+  height: 25rem;
+
+}
+
+.service{
+  padding: 25rem;
+}
+
 .element-details {
   width: 100%;
   height: 26rem;
@@ -3636,8 +3646,20 @@ Ensure the default browser behavior of the `hidden` attribute.
 .is-sticky .sticky-dark {
   color: #0B2C3D;
 }
+
+.bg-hero {
+  background-color: #0B2C3D;
+}
+
+.text-primary{
+  color: #B39359;
+
+}
+
+
 .is-sticky .white-logo {
   display: none;
+  
 }
 .is-sticky .dark-logo {
   display: block;
