@@ -62,12 +62,22 @@ class HomeController extends Controller
         return view('pages.properties', compact('properties', 'sort', 'categories'));
     }
 
-    function propertiesDetails($id)
+    public function propertiesDetails($id)
     {
         $property = Property::findOrFail($id);
         $properties = Property::all();
 
         return view('pages.properties-details', compact('property', 'properties'));
+    }
+
+    public function about()
+    {
+        return view('pages.about');
+    }
+
+    public function contact()
+    {
+        return view('pages.contact');
     }
 
 

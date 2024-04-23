@@ -24,11 +24,13 @@ class PropertyController extends Controller
 
     public function index()
     {
-        $properties = $this->propertyRepository->all();
-        $propertyTypes = PropertyType::all();
-        $categories = Category::all();
-        return view('agent.properties.index', compact('properties', 'propertyTypes', 'categories'));
+        $agentId = auth()->user()->id;
+
+        $properties = Property::where('user_id', $agentId)->get();
+
+        return view('properties.index', compact('properties'));
     }
+
 
     public function create()
     {
@@ -44,17 +46,18 @@ class PropertyController extends Controller
         $property = $this->propertyRepository->create($request->validated());
 
         if ($request->has('property_amenities')) {
+            
             foreach ($request->property_amenities as $amenity) {
                 $property->amenities()->attach($amenity);
             }
         }
 
         if ($request->hasFile('images')) {
+            
             foreach ($request->file('images') as $image) {
                 $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
                 $path = $image->storeAs('images/properties', $filename, 'public');
 
-                // Create a new media record for each image
                 $property->media()->create([
                     'file_name' => $filename,
                     'file_type' => $image->getClientMimeType(),
@@ -62,7 +65,6 @@ class PropertyController extends Controller
                 ]);
             }
         }
-
         return redirect()->route('properties.index');
     }
 
@@ -72,7 +74,14 @@ class PropertyController extends Controller
         $propertyTypes = PropertyType::all();
         $propertyAmenities = PropertyAmenity::all();
         $categories = Category::all();
-        return view('agent.properties.edit', compact('property', 'agencies', 'propertyTypes', 'propertyAmenities', 'categories'));
+        return view('agent.properties.edit', compact(
+            'property',
+            'agencies',
+            'propertyTypes',
+            'propertyAmenities',
+            'categories'
+        )
+        );
     }
 
     public function update(UpdatePropertyRequest $request, int $id)
@@ -80,7 +89,7 @@ class PropertyController extends Controller
         $this->propertyRepository->update($request->validated(), $id);
 
         $property = Property::find($id);
-        
+
         if ($request->hasFile('images')) {
 
             foreach ($request->file('images') as $image) {
@@ -111,7 +120,7 @@ class PropertyController extends Controller
             $property->delete();
 
             return response()->json(['status' => 'success']);
-            
+
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => 'Failed to delete property: ' . $e->getMessage()], 500);
         }
