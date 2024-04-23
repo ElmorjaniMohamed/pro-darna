@@ -19,6 +19,7 @@ class Agency extends Model
         'email',
         'number_of_agent',
         'webSite',
+        'user_id'
     ];
 
     public function properties()
@@ -30,4 +31,10 @@ class Agency extends Model
     {
         return $this->hasMany(Media::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

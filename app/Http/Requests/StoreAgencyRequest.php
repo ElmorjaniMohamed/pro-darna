@@ -29,6 +29,7 @@ class StoreAgencyRequest extends FormRequest
             'number_of_agent' => 'required|integer',
             'webSite' => 'required|url|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 
@@ -56,6 +57,8 @@ class StoreAgencyRequest extends FormRequest
             'image.required' => 'The image field is required.',
             'image.image' => 'The image must be an image.',
             'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif, svg.',
+            'user_id.required' => 'The user id field is required.',
+            'user_id.exists' => 'The selected user id is invalid.',
         ];
     }
 }
