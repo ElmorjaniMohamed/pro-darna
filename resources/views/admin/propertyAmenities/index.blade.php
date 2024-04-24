@@ -1,3 +1,4 @@
+<x-common.success-message />
 <x-layout.default>
     <!-- Start block -->
     <section class="bg-none p-3 sm:p-5 antialiased">
