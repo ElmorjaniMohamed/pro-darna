@@ -56,9 +56,7 @@
                     </ul>
                 </li>
 
-                <h2
-                    class="py-3 mb-2 px-7 flex items-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4">
-
+                <h2 class="py-3 mb-2 px-7 flex items-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4">
                     <svg class="w-4 h-5 flex-none hidden" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -68,11 +66,11 @@
 
                 <li class="nav-item">
                     <ul class="space-y-2">
+                        @if (auth()->user()->hasRole('admin'))
                         <li
                             class="nav-item rounded-md  {{ request()->routeIs('categories.*') ? 'bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark' : '' }}">
                             <a href="{{ route('categories.index') }}" class="group">
                                 <div class="flex items-center">
-
                                     <svg class="group-hover:!text-primary {{ request()->routeIs('categories.*') ? '!text-primary' : '' }} shrink-0 "
                                         width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -91,8 +89,8 @@
                                 </div>
                             </a>
                         </li>
-                        <li
-                            class="nav-item rounded-md  {{ request()->routeIs('agencies.*') ? 'bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark' : '' }}">
+                        @endif
+                        <li class="nav-item rounded-md  {{ request()->routeIs('agencies.*') ? 'bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark' : '' }}">
                             <a href="{{ route('agencies.index') }}" class="group">
                                 <div class="flex items-center">
 
@@ -117,7 +115,6 @@
                                 </div>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
@@ -132,6 +129,7 @@
                 </h2>
                 <li class="nav-item">
                     <ul class="space-y-2">
+                        @if (auth()->user()->hasRole('admin'))
                         <li
                             class="nav-item rounded-md  {{ request()->routeIs('propertyTypes.*') ? 'bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark' : '' }}">
                             <a href="{{ route('propertyTypes.index') }}" class="group">
@@ -156,6 +154,8 @@
                                 </div>
                             </a>
                         </li>
+                        @endif
+                        @if (auth()->user()->hasRole('admin'))
                         <li
                             class="nav-item rounded-md  {{ request()->routeIs('propertyAmenities.*') ? 'bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark' : '' }}">
                             <a href="{{ route('propertyAmenities.index') }}" class="group">
@@ -181,6 +181,7 @@
                                 </div>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-item rounded-md {{ request()->routeIs('properties.*') ? 'bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark' : '' }}">
                             <a href="{{route('properties.index')}}" class="group">
                                 <div class="flex items-center">
@@ -213,7 +214,6 @@
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </nav>
