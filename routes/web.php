@@ -48,16 +48,16 @@ Route::post('/forget-password', [ForgetPasswordController::class, 'submitForgetP
 Route::get('/reset-password/{token}', [ResetPasswordController::class, 'index'])->name('reset.password.get');
 Route::post('/reset-password', [ResetPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
-
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('propertyTypes', PropertyTypeController::class);
     Route::resource('propertyAmenities', PropertyAmenityController::class);
 });
 
-Route::prefix('agent')->group(function () {
-    Route::resource('agencies', AgencyController::class);
-    Route::resource('properties', PropertyController::class);
+Route::prefix('agent')->middleware(['auth'])->group(function () {
+Route::resource('agencies', AgencyController::class);
+Route::resource('properties', PropertyController::class);
 });
 
-Route::delete('/property/{property}/media/{media}', [PropertyController::class, 'removeImage'])->name('property.media.remove');
+Route::delete('/property/{property}/media/{media}', [PropertyController::class,
+'removeImage'])->name('property.media.remove');
