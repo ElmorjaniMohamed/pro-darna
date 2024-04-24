@@ -10,7 +10,7 @@
             <!-- Modal body -->
             <form class="space-y-5" method="POST" action="{{ route('agencies.store') }}" enctype="multipart/form-data">
                 @csrf
-
+                @method('POST')
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label for="gridName">Name</label>

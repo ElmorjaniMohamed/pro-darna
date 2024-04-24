@@ -11,7 +11,7 @@ class StoreAgencyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; 
+        return true;
     }
 
     /**
@@ -24,12 +24,11 @@ class StoreAgencyRequest extends FormRequest
             'description' => 'required|string',
             'address' => 'required|string|max:255',
             'zipCode' => 'required|integer',
-            'phone' => 'required|string|max:15',
+            'phone' => 'required|regex:/^\+?[0-9]{1,15}$/',
             'email' => 'required|email|max:255',
             'number_of_agent' => 'required|integer',
             'webSite' => 'required|url|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'user_id' => 'required|exists:users,id',
         ];
     }
 
@@ -45,7 +44,7 @@ class StoreAgencyRequest extends FormRequest
             'zipCode.required' => 'The zip code field is required.',
             'zipCode.integer' => 'The zip code must be an integer.',
             'phone.required' => 'The phone field is required.',
-            'phone.max' => 'The phone may not be greater than 15 characters.',
+            'phone.regex' => 'The phone format is invalid.',
             'email.required' => 'The email field is required.',
             'email.email' => 'The email must be a valid email address.',
             'email.max' => 'The email may not be greater than 255 characters.',
@@ -58,7 +57,6 @@ class StoreAgencyRequest extends FormRequest
             'image.image' => 'The image must be an image.',
             'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif, svg.',
             'user_id.required' => 'The user id field is required.',
-            'user_id.exists' => 'The selected user id is invalid.',
         ];
     }
 }
