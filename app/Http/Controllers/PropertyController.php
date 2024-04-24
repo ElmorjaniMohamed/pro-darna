@@ -24,11 +24,10 @@ class PropertyController extends Controller
 
     public function index()
     {
-        $agentId = auth()->user()->id;
-
-        $properties = Property::where('user_id', $agentId)->get();
-
-        return view('properties.index', compact('properties'));
+        $properties = $this->propertyRepository->all();
+        $propertyTypes = PropertyType::all();
+        $categories = Category::all();
+        return view('agent.properties.index', compact('properties', 'propertyTypes', 'categories'));
     }
 
 
@@ -65,6 +64,7 @@ class PropertyController extends Controller
                 ]);
             }
         }
+
         return redirect()->route('properties.index');
     }
 

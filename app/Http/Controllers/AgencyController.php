@@ -21,7 +21,9 @@ class AgencyController extends Controller
     public function index()
     {
         $agencies = Agency::paginate(5);
-        return view('agent.agencies.index', compact('agencies'));
+        $userHasAgency = Agency::where('user_id', auth()->user()->id)->exists();
+        
+        return view('agent.agencies.index', compact('agencies', 'userHasAgency'));
     }
 
     public function create()
@@ -31,17 +33,9 @@ class AgencyController extends Controller
 
     public function store(StoreAgencyRequest $request)
     {
-        $agentId = $request->user()->id; 
-
-
-        $existingAgency = Agency::where('user_id', $agentId)->first();
-        if ($existingAgency) {
-            return redirect()->back()->withErrors(['message' => 'Each agent can only create one agency.']);
-        }
 
         $validated = $request->validated();
-        $validated['user_id'] = $agentId; 
-
+        $validated['user_id'] = auth()->id();
         $agency = $this->agencyRepository->create($validated);
 
         if ($request->hasFile('image')) {
@@ -55,6 +49,7 @@ class AgencyController extends Controller
             $media->file_name = $filename;
             $media->file_type = $image->getClientMimeType();
             $media->file_path = $path;
+            $media->save();
 
         }
 
@@ -95,7 +90,7 @@ class AgencyController extends Controller
         try {
             $this->agencyRepository->delete($id);
             return response()->json(['status' => 'success']);
-
+            
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => 'Failed to delete agency: ' . $e->getMessage()], 500);
         }
