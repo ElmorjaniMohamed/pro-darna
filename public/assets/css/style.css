@@ -210,6 +210,10 @@ sup {
   border: none;
 }
 
+.mb-12{
+  margin-bottom: 6rem;
+}
+
 /*
 1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
 2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
@@ -1239,7 +1243,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 .ml-3 {
   margin-left: 0.75rem;
 }
-
+active
 .-mb-10 {
   margin-bottom: -2.5rem;
 }
@@ -1257,7 +1261,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .mb-8 {
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 }
 
 .ml-auto {
