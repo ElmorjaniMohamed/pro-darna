@@ -1,4 +1,5 @@
 <x-layout.default>
+    <x-slot name="title">Edit Agency</x-slot>
 
     <div class="bg-white dark:bg-gray-800 relative  shadow-md sm:rounded-lg overflow-hidden">
         <div class="relative p-4 bg-white rounded-lg shadow  dark:bg-gray-800 sm:p-5">

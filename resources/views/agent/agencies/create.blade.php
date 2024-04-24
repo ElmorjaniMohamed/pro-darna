@@ -1,4 +1,5 @@
 <x-layout.default>
+    <x-slot name="title">Add Agency</x-slot>
 
     <div class="bg-white dark:bg-gray-800 relative  shadow-md sm:rounded-lg overflow-hidden">
         <div class="relative p-4 bg-white rounded-lg shadow  dark:bg-gray-800 sm:p-5">
@@ -41,7 +42,7 @@
                         <label for="gridPhone">Phone</label>
                         <input id="gridPhone" name="phone" type="text" placeholder="Enter Phone"
                             class="form-input" />
-                       <x-common.error-message-input name="phone" />
+                        <x-common.error-message-input name="phone" />
                     </div>
                     <div>
                         <label for="gridZipCode">Zip Code</label>
