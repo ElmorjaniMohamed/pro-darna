@@ -18,17 +18,19 @@ class AgencyController extends Controller
         $this->agencyRepository = $agencyRepository;
     }
 
+
     public function index()
     {
         $agencies = Agency::paginate(5);
         $userHasAgency = Agency::where('user_id', auth()->user()->id)->exists();
-        
+
         return view('agent.agencies.index', compact('agencies', 'userHasAgency'));
     }
 
-    public function create()
+
+    public function create(Agency $agency)
     {
-        return view('agent.agencies.create');
+        return view('agent.agencies.create', compact('agency'));
     }
 
     public function store(StoreAgencyRequest $request)
@@ -53,7 +55,7 @@ class AgencyController extends Controller
 
         }
 
-        return redirect()->route('agencies.index');
+        return redirect()->route('agencies.index')->with('success', 'Agency created successfully');
     }
 
     public function edit(Agency $agency)
@@ -82,17 +84,15 @@ class AgencyController extends Controller
 
         $this->agencyRepository->update($validated, $agency->id);
 
-        return redirect()->route('agencies.index');
+        return redirect()->route('agencies.index')->with('success', 'Agency updated successfully');;
     }
 
     public function destroy($id)
     {
-        try {
-            $this->agencyRepository->delete($id);
-            return response()->json(['status' => 'success']);
-            
-        } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => 'Failed to delete agency: ' . $e->getMessage()], 500);
-        }
+
+        $this->agencyRepository->delete($id);
+        return redirect()->route('agencies.index')->with('success', 'Agency deleted successfully');
+
     }
+
 }

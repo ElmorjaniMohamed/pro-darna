@@ -33,7 +33,7 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         $this->categoryRepository->create($request->validated());
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Category created successfully');
     }
 
     public function edit(Category $category)
@@ -44,7 +44,7 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $this->categoryRepository->update($request->validated(), $category);
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully');
     }
 
     public function destroy($id)
