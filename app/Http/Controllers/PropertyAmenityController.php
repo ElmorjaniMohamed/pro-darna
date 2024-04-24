@@ -30,7 +30,7 @@ class PropertyAmenityController extends Controller
     public function store(StorePropertyAmenityRequest $request)
     {
         $this->propertyAmenityRepository->create($request->validated());
-        return redirect()->route('propertyAmenities.index');
+        return redirect()->route('propertyAmenities.index')->with('success', 'Property amenity created successfully');
     }
 
     public function edit(PropertyAmenity $propertyAmenity)
@@ -41,7 +41,7 @@ class PropertyAmenityController extends Controller
     public function update(UpdatePropertyAmenityRequest $request, int $id)
     {
         $this->propertyAmenityRepository->update($request->validated(), $id);
-        return redirect()->route('propertyAmenities.index');
+        return redirect()->route('propertyAmenities.index')->with('success', 'Property amenity updated successfully');
     }
 
     public function destroy($id)

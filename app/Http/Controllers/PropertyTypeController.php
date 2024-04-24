@@ -30,7 +30,7 @@ class PropertyTypeController extends Controller
     public function store(StorePropertyTypeRequest $request)
     {
         $this->propertyTypeRepository->create($request->validated());
-        return redirect()->route('propertyTypes.index');
+        return redirect()->route('propertyTypes.index')->with('success', 'Property type created successfully');
     }
 
     public function edit(PropertyType $propertyType)
@@ -41,7 +41,7 @@ class PropertyTypeController extends Controller
     public function update(UpdatePropertyTypeRequest $request, PropertyType $propertyType)
     {
         $this->propertyTypeRepository->update($request->validated(), $propertyType->id);
-        return redirect()->route('propertyTypes.index');
+        return redirect()->route('propertyTypes.index')->with('success', 'Property type updated successfully');
     }
 
     public function destroy($id)

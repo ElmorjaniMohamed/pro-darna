@@ -65,7 +65,7 @@ class PropertyController extends Controller
             }
         }
 
-        return redirect()->route('properties.index');
+        return redirect()->route('properties.index')->with('success', 'Property created successfully');
     }
 
     public function edit(Property $property)
@@ -104,7 +104,7 @@ class PropertyController extends Controller
             }
         }
 
-        return redirect()->route('properties.index');
+        return redirect()->route('properties.index')->with('success', 'Property updated successfully');
     }
 
     public function destroy($id)
