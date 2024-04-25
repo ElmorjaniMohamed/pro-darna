@@ -55,9 +55,18 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::prefix('agent')->middleware(['auth'])->group(function () {
-Route::resource('agencies', AgencyController::class);
-Route::resource('properties', PropertyController::class);
+    Route::get('agencies', [AgencyController::class, 'index'])->name('agencies.index');
+    Route::get('agencies/create', [AgencyController::class, 'create'])->name('agencies.create')->middleware('check.agency');
+    Route::post('agencies', [AgencyController::class, 'store'])->name('agencies.store');
+    Route::get('agencies/{agency}/edit', [AgencyController::class, 'edit'])->name('agencies.edit');
+    Route::put('agencies/{agency}', [AgencyController::class, 'update'])->name('agencies.update');
+    Route::delete('agencies/{agency}', [AgencyController::class, 'destroy'])->name('agencies.destroy');
+    Route::resource('properties', PropertyController::class);
 });
 
-Route::delete('/property/{property}/media/{media}', [PropertyController::class,
-'removeImage'])->name('property.media.remove');
+
+
+Route::delete('/property/{property}/media/{media}', [
+    PropertyController::class,
+    'removeImage'
+])->name('property.media.remove');
