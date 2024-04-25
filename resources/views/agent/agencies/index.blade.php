@@ -1,11 +1,10 @@
+<x-common.success-message />
 <x-layout.default>
-
-    <style>
-
-    </style>
+    <x-slot name="title">Agencies</x-slot>
     <!-- Start block -->
     <section class="bg-none p-3 sm:p-5 antialiased">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+            
             <!-- Start coding here -->
             <div class="bg-white dark:bg-gray-900 relative shadow-md sm:rounded-lg overflow-hidden">
                 <div
@@ -28,18 +27,20 @@
                             </div>
                         </form>
                     </div>
-                    <div
-                        class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        <a href="{{ route('agencies.create') }}"
-                            class="flex items-center justify-center text-white bg-primary hover:bg-primary focus:ring-4  font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary dark:hover:bg-primary">
-                            <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path clip-rule="evenodd" fill-rule="evenodd"
-                                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
-                            </svg>
-                            Add Agency
-                        </a>
-                    </div>
+                    @if (!$userHasAgency)
+                        <div
+                            class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                            <a href="{{ route('agencies.create') }}"
+                                class="flex items-center justify-center text-white bg-primary hover:bg-primary focus:ring-4  font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary dark:hover:bg-primary">
+                                <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path clip-rule="evenodd" fill-rule="evenodd"
+                                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
+                                </svg>
+                                Add Agency
+                            </a>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="overflow-x-auto">
@@ -114,7 +115,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <button data-id="{{ $agency->id }}" x-tooltip="Delete"
+                                                        {{-- <button data-id="{{ $agency->id }}" x-tooltip="Delete"
                                                             class="deleteButton">
                                                             <svg width="24" height="24" viewBox="0 0 24 24"
                                                                 fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +136,33 @@
                                                                     d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6"
                                                                     stroke="currentColor" stroke-width="1.5" />
                                                             </svg>
-                                                        </button>
+                                                        </button> --}}
+                                                        <form method="POST" action="{{ route('agencies.destroy', $agency->id) }}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" x-tooltip="Delete"
+                                                                class="deleteButton">
+                                                                <svg width="24" height="24" viewBox="0 0 24 24"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                                    class="w-5 h-5 text-danger">
+                                                                    <path d="M20.5001 6H3.5" stroke="currentColor"
+                                                                        stroke-width="1.5" stroke-linecap="round" />
+                                                                    <path
+                                                                        d="M18.8334 8.5L18.3735 15.3991C18.1965 18.054 18.108 19.3815 17.243 20.1907C16.378 21 15.0476 21 12.3868 21H11.6134C8.9526 21 7.6222 21 6.75719 20.1907C5.89218 19.3815 5.80368 18.054 5.62669 15.3991L5.16675 8.5"
+                                                                        stroke="currentColor" stroke-width="1.5"
+                                                                        stroke-linecap="round" />
+                                                                    <path opacity="0.5" d="M9.5 11L10 16"
+                                                                        stroke="currentColor" stroke-width="1.5"
+                                                                        stroke-linecap="round" />
+                                                                    <path opacity="0.5" d="M14.5 11L14 16"
+                                                                        stroke="currentColor" stroke-width="1.5"
+                                                                        stroke-linecap="round" />
+                                                                    <path opacity="0.5"
+                                                                        d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6"
+                                                                        stroke="currentColor" stroke-width="1.5" />
+                                                                </svg>
+                                                            </button>
+                                                        </form>
                                                     </li>
                                                 </ul>
                                             </td>

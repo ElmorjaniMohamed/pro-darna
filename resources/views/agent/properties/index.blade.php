@@ -1,3 +1,4 @@
+<x-common.success-message />
 <x-layout.default>
 
     <style>

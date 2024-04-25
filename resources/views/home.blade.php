@@ -25,7 +25,7 @@
                                             can find here co-living property, So you have lots of opportunity
                                         </p>
                                         <div class="inline-block ">
-                                            <a href="contact-us.html" class="btn btn-secondary ">Contact
+                                            <a href="contact-us.html" class="contact-btn font-lora font-medium">Contact
                                                 us</a>
                                         </div>
                                     </div>
