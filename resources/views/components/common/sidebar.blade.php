@@ -131,7 +131,7 @@
                     <ul class="space-y-2">
                         @if (auth()->user()->hasRole('admin'))
                         <li
-                            class="nav-item rounded-md  {{ request()->routeIs('propertyTypes.*') ? 'bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark' : '' }}">
+                            class="nav-item rounded-md {{ request()->routeIs('propertyTypes.*') ? 'bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark' : '' }}">
                             <a href="{{ route('propertyTypes.index') }}" class="group">
                                 <div class="flex items-center">
                                     <svg class="group-hover:!text-primary {{ request()->routeIs('propertyTypes.*') ? '!text-primary' : '' }} shrink-0"
