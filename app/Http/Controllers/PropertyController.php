@@ -12,10 +12,6 @@ use App\Models\PropertyAmenity;
 use App\Models\Category;
 use App\Models\Media;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\MessageRequest;
-use App\Mail\MessageReceived;
-use App\Models\Message;
-use Illuminate\Support\Facades\Mail;
 
 
 class PropertyController extends Controller
@@ -50,14 +46,14 @@ class PropertyController extends Controller
         $property = $this->propertyRepository->create($request->validated());
 
         if ($request->has('property_amenities')) {
-            
+
             foreach ($request->property_amenities as $amenity) {
                 $property->amenities()->attach($amenity);
             }
         }
 
         if ($request->hasFile('images')) {
-            
+
             foreach ($request->file('images') as $image) {
                 $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
                 $path = $image->storeAs('images/properties', $filename, 'public');
@@ -79,13 +75,15 @@ class PropertyController extends Controller
         $propertyTypes = PropertyType::all();
         $propertyAmenities = PropertyAmenity::all();
         $categories = Category::all();
-        return view('agent.properties.edit', compact(
-            'property',
-            'agencies',
-            'propertyTypes',
-            'propertyAmenities',
-            'categories'
-        )
+        return view(
+            'agent.properties.edit',
+            compact(
+                'property',
+                'agencies',
+                'propertyTypes',
+                'propertyAmenities',
+                'categories'
+            )
         );
     }
 
@@ -133,29 +131,17 @@ class PropertyController extends Controller
 
     public function removeImage(Property $property, Media $media)
     {
- 
+
         if ($property->media->contains($media)) {
 
             $media->delete();
-            
+
             Storage::delete($media->file_path);
         }
 
         return response()->json(['message' => 'Image removed successfully']);
     }
 
-    public function message(MessageRequest $request, Property $property)
-    {
-        $validated = $request->validated();
+    
 
-        // Create a new message and associate it with the property
-        $message = new Message($validated);
-        $message->property()->associate($property);
-        $message->save();
-
-        // Send an email to the agent with the user's contact information and message
-        Mail::to($property->agent->email)->send(new MessageReceived($message));
-
-        return back()->with('success', 'Your message has been sent successfully');
-    }
 }
