@@ -3411,6 +3411,17 @@ active
   transition-duration: 150ms;
 }
 
+.contact-btn {
+  border-radius: 6px;
+  --tw-bg-opacity: 1;
+  background-color: #B39359;
+  padding: 16px 26px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  color: #ffffff;
+}
+
 .search-btn:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(11 44 61/var(--tw-bg-opacity));
@@ -3651,6 +3662,12 @@ active
   color: #0B2C3D;
 }
 
+.is-sticky .sticky-nav {
+  color: #B39359;
+}
+
+
+
 .bg-hero {
   background-color: #0B2C3D;
 }
@@ -3659,6 +3676,8 @@ active
   color: #B39359;
 
 }
+
+
 
 
 .is-sticky .white-logo {
