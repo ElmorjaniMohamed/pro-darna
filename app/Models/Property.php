@@ -50,4 +50,14 @@ class Property extends Model
     {
         return $this->hasMany(Media::class);
     }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
 }

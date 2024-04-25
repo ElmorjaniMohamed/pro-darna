@@ -1,3 +1,4 @@
+<x-common.success-message />
 @extends('components.layout.app')
 
 @section('content')
@@ -92,42 +93,30 @@
                                 Leave a Message<span class="text-secondary">.</span>
                             </h2>
                             <div class="mt-[60px]">
-                                <form action="#" class="grid grid-cols-12 gap-x-[20px] gap-y-[30px]">
-
+                                <form action="{{route('properties.message', $property->id)}}" method="POST" class="grid grid-cols-12 gap-x-[20px] gap-y-[30px]">
+                                    @csrf
                                     <div class="col-span-12 md:col-span-6">
-                                        <input
-                                            class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] "
-                                            type="text" placeholder="First Name">
+                                        <input name="first_name" type="text" placeholder="First Name" class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)]">
                                     </div>
 
                                     <div class="col-span-12 md:col-span-6">
-                                        <input
-                                            class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] "
-                                            type="text" placeholder="Last Name">
+                                        <input name="last_name" type="text" placeholder="Last Name" class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)]">
                                     </div>
 
                                     <div class="col-span-12 md:col-span-6">
-                                        <input
-                                            class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] "
-                                            type="text" placeholder="Phone number">
+                                        <input name="phone_number" type="text" placeholder="Phone number" class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)]">
                                     </div>
 
                                     <div class="col-span-12 md:col-span-6">
-                                        <input
-                                            class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] "
-                                            type="email" placeholder="Email Address">
+                                        <input name="email" type="email" placeholder="Email Address" class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)]">
                                     </div>
 
                                     <div class="col-span-12">
-                                        <textarea
-                                            class="h-[196px] font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] resize-none"
-                                            name="textarea" id="textarea" cols="30" rows="10" placeholder="Message"></textarea>
+                                        <textarea name="message" placeholder="Message" class="h-[196px] font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] resize-none"></textarea>
                                     </div>
 
                                     <div class="col-span-12">
-                                        <button type="submit"
-                                            class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-secondary before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[30px] py-[15px] capitalize font-medium text-white block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-primary after:rounded-md after:transition-all">Contact
-                                            us</button>
+                                        <button type="submit" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-secondary before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[30px] py-[15px] capitalize font-medium text-white block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-primary after:rounded-md after:transition-all">Contact us</button>
                                     </div>
                                 </form>
                             </div>

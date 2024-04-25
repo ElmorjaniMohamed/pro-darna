@@ -20,6 +20,7 @@ Route::view('/admin', 'admin.index');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/sort-properties', [HomeController::class, 'sort']);
 Route::get('/properties', [HomeController::class, 'properties'])->name('properties');
+Route::post('/properties/{property}/message', [PropertyController::class, 'message'])->name('properties.message');
 Route::get('/properties-details/{id}', [HomeController::class, 'propertiesDetails'])->name('properties-details');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
