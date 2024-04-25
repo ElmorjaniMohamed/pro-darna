@@ -29,11 +29,7 @@
                         <ul class="tab-nav search-tab inline-flex px-[15px] sm:px-[30px] py-[22px] border-t border-l border-r border-solid border-[#016450] border-opacity-[25%] rounded-tl-[15px] rounded-tr-[15px] bg-white">
                             <li data-tab="buy" class="mr-[5px] sm:mr-[10px] md:mr-[46px] my-1 active"><button class="font-lora leading-none px-[5px] sm:px-[10px] capitalize text-primary transition-all text-base xl:text-[22px] before:absolute before:left-auto before:right-0 before:bottom-[-32px] before:w-0 before:h-[3px] before:content-[''] before:bg-secondary relative before:transition-all ease-out">buy</button>
                             </li>
-                            <li data-tab="sell" class="mr-[5px] sm:mr-[10px] md:mr-[46px] my-1"><button class="font-lora leading-none px-[5px] sm:px-[10px] capitalize text-primary transition-all text-base xl:text-[22px] before:absolute before:left-auto before:right-0 before:bottom-[-32px] before:w-0 before:h-[3px] before:z-[9] before:content-[''] before:bg-secondary relative before:transition-all ease-out">sell</button>
-                            </li>
-                            <li data-tab="rent" class="mr-[5px] sm:mr-[10px] md:mr-[46px] my-1"><button class="font-lora leading-none px-[5px] sm:px-[10px] capitalize text-primary transition-all text-base xl:text-[22px] before:absolute before:left-auto before:right-0 before:bottom-[-32px] before:w-0 before:h-[3px] before:content-[''] before:bg-secondary relative before:transition-all ease-out">rent</button>
-                            </li>
-                            <li data-tab="co-living" class="md:mr-[0px] my-1"><button class="font-lora leading-none px-[5px] sm:px-[10px] capitalize text-primary transition-all text-base xl:text-[22px] before:absolute before:left-auto before:right-0 before:bottom-[-32px] before:w-0 before:h-[3px] before:content-[''] before:bg-secondary relative before:transition-all ease-out">Co-living</button>
+                            <li data-tab="sell" class="mr-[5px] sm:mr-[10px] md:mr-[46px] my-1"><button class="font-lora leading-none px-[5px] sm:px-[10px] capitalize text-primary transition-all text-base xl:text-[22px] before:absolute before:left-auto before:right-0 before:bottom-[-32px] before:w-0 before:h-[3px] before:z-[9] before:content-[''] before:bg-secondary relative before:transition-all ease-out">sale</button>
                             </li>
                         </ul>
 
@@ -124,8 +120,6 @@
 
                                 </div>
 
-
-
                                 <div class="advanced-searrch-hidden flex flex-wrap items-center mt-[45px] -mb-[45px]">
 
                                     <div class="advanced-searrch-list flex items-center mb-[45px] lg:border-r lg:border-[#D6D4D4] lg:mr-[40px] xl:mr-[50px] last:mr-0 last:border-r-0 search-list">
@@ -181,7 +175,6 @@
                                     </div>
 
                                 </div>
-
 
                             </form>
                         </div>
@@ -256,8 +249,6 @@
                                     </div>
 
                                 </div>
-
-
 
                                 <div class="advanced-searrch-hidden flex flex-wrap items-center mt-[45px] -mb-[45px]">
 
@@ -390,8 +381,6 @@
 
                                 </div>
 
-
-
                                 <div class="advanced-searrch-hidden flex flex-wrap items-center mt-[45px] -mb-[45px]">
 
                                     <div class="advanced-searrch-list flex items-center mb-[45px] lg:border-r lg:border-[#D6D4D4] lg:mr-[40px] xl:mr-[50px] last:mr-0 last:border-r-0 search-list">
@@ -447,7 +436,6 @@
                                     </div>
 
                                 </div>
-
 
                             </form>
                         </div>
@@ -522,9 +510,6 @@
                                     </div>
 
                                 </div>
-
-
-
                                 <div class="advanced-searrch-hidden flex flex-wrap items-center mt-[45px] -mb-[45px]">
 
                                     <div class="advanced-searrch-list flex items-center mb-[45px] lg:border-r lg:border-[#D6D4D4] lg:mr-[40px] xl:mr-[50px] last:mr-0 last:border-r-0 search-list">
@@ -687,7 +672,7 @@
                                     Properties</button>
                             </li>
                             @foreach ($categories as $category)
-                                <li value="{{ $category->id }}" class="mr-[30px] md:mr-[45px] mb-4 lg:mb-0 leading-none">
+                                <li value="{{ $category->id }}" class="mr-[30px] md:mr-[45px] mb-4 lg:mb-0 leading-none active">
                                     <button
                                         class="leading-none capitalize text-primary hover:text-secondary transition-all text-[16px] ease-out">{{ $category->name }}</button>
                                 </li>

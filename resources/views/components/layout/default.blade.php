@@ -24,6 +24,9 @@
     
     @vite(['resources/css/app.css'])
     @vite(['node_modules/flowbite/dist/flowbite.min.js'])
+
+     <!-- GSAP library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 
 <body x-data="main" class="antialiased relative font-nunito text-sm font-normal overflow-x-hidden"
