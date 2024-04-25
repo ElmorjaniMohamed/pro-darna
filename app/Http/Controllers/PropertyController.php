@@ -12,6 +12,11 @@ use App\Models\PropertyAmenity;
 use App\Models\Category;
 use App\Models\Media;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\MessageRequest;
+use App\Mail\MessageReceived;
+use App\Models\Message;
+use Illuminate\Support\Facades\Mail;
+
 
 class PropertyController extends Controller
 {
@@ -128,15 +133,29 @@ class PropertyController extends Controller
 
     public function removeImage(Property $property, Media $media)
     {
-        // Check if the media belongs to the property
+ 
         if ($property->media->contains($media)) {
-            // Delete the media
-            $media->delete();
 
-            // Delete the image file
+            $media->delete();
+            
             Storage::delete($media->file_path);
         }
 
         return response()->json(['message' => 'Image removed successfully']);
+    }
+
+    public function message(MessageRequest $request, Property $property)
+    {
+        $validated = $request->validated();
+
+        // Create a new message and associate it with the property
+        $message = new Message($validated);
+        $message->property()->associate($property);
+        $message->save();
+
+        // Send an email to the agent with the user's contact information and message
+        Mail::to($property->agent->email)->send(new MessageReceived($message));
+
+        return back()->with('success', 'Your message has been sent successfully');
     }
 }
