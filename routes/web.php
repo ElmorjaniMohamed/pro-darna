@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\VerifyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyAmenityController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\PropertyTypeController;
@@ -66,6 +67,8 @@ Route::prefix('agent')->middleware(['auth'])->group(function () {
     Route::resource('properties', PropertyController::class);
     Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
     Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('profile/account-settings', [ProfileController::class, 'accountSettings'])->name('profile.account-settings');
 });
 
 

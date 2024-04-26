@@ -6,7 +6,7 @@
     <title>Forget Password Email</title>
     @vite(['resources/css/app.css'])
 </head>
-<body class="bg-[linear-gradient(225deg,rgba(239,18,98,1)_0%,rgba(67,97,238,1)_100%)] p-5 lg:inline-flex lg:max-w-[835px] xl:-ms-28 ltr:xl:skew-x-[14deg] rtl:xl:skew-x-[-14deg]">
+<body class="bg-gradient-to-r from-[#0B2C3D] to-[#B39359] p-5 lg:inline-flex lg:max-w-[835px] xl:-ms-28 ltr:xl:skew-x-[14deg] rtl:xl:skew-x-[-14deg]">
     <div class="flex justify-center items-center h-screen">
         <div class="bg-white shadow-md rounded-md p-8 max-w-md w-full">
             <h1 class="text-3xl  text-gray-900 font-bold mb-6 text-center">Forget Password Email</h1>
