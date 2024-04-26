@@ -14,13 +14,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\MessageController;
 
 
 Route::view('/admin', 'admin.index');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/sort-properties', [HomeController::class, 'sort']);
 Route::get('/properties', [HomeController::class, 'properties'])->name('properties');
-Route::post('/properties/{property}/message', [PropertyController::class, 'message'])->name('properties.message');
+Route::post('/properties/{property}/message', [MessageController::class, 'message'])->name('properties.message');
 Route::get('/properties-details/{id}', [HomeController::class, 'propertiesDetails'])->name('properties-details');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -63,6 +64,8 @@ Route::prefix('agent')->middleware(['auth'])->group(function () {
     Route::put('agencies/{agency}', [AgencyController::class, 'update'])->name('agencies.update');
     Route::delete('agencies/{agency}', [AgencyController::class, 'destroy'])->name('agencies.destroy');
     Route::resource('properties', PropertyController::class);
+    Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 });
 
 
