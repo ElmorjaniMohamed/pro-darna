@@ -4,18 +4,12 @@
         <div class="absolute inset-0">
             <img src="/assets/images/auth/bg-gradient.png" alt="image" class="h-full w-full object-cover" />
         </div>
-        <div class="relative flex min-h-screen items-center justify-center px-6 py-10 dark:bg-[#060818] sm:px-16">
-            <img src="/assets/images/auth/coming-soon-object1.png" alt="image"
-                class="absolute left-0 top-1/2 h-full max-h-[893px] -translate-y-1/2" />
-            <img src="/assets/images/auth/coming-soon-object2.png" alt="image"
-                class="absolute left-24 top-0 h-40 md:left-[30%]" />
-            <img src="/assets/images/auth/coming-soon-object3.png" alt="image"
-                class="absolute right-0 top-0 h-[300px]" />
-            <img src="/assets/images/auth/polygon-object.svg" alt="image" class="absolute bottom-0 end-[28%]" />
+        <div class="relative flex min-h-screen items-center justify-center px-6 py-10 bg-[#B39359] dark:bg-[#060818] sm:px-16">
+
             <div
-                class="relative flex w-full max-w-[1502px] flex-col justify-between overflow-hidden rounded-md bg-white/60 backdrop-blur-lg dark:bg-black/50 lg:min-h-[758px] lg:flex-row lg:gap-10 xl:gap-0">
+                class="relative flex w-full max-w-[1502px] flex-col justify-between overflow-hidden rounded-md bg-[#f8daa2] backdrop-blur-lg dark:bg-black/50 lg:min-h-[758px] lg:flex-row lg:gap-10 xl:gap-0">
                 <div
-                    class="relative hidden w-full items-center justify-center bg-[linear-gradient(225deg,rgba(239,18,98,1)_0%,rgba(67,97,238,1)_100%)] p-5 lg:inline-flex lg:max-w-[835px] xl:-ms-28 ltr:xl:skew-x-[14deg] rtl:xl:skew-x-[-14deg]">
+                    class="relative hidden w-full items-center justify-center bg-gradient-to-r from-[#0B2C3D] to-[#B39359] p-5 lg:inline-flex lg:max-w-[835px] xl:-ms-28 ltr:xl:skew-x-[14deg] rtl:xl:skew-x-[-14deg]">
                     <div
                         class="absolute inset-y-0 w-8 from-primary/10 via-transparent to-transparent ltr:-right-10 ltr:bg-gradient-to-r rtl:-left-10 rtl:bg-gradient-to-l xl:w-16 ltr:xl:-right-20 rtl:xl:-left-20">
                     </div>
@@ -40,7 +34,7 @@
                         <div class="mb-10">
                             <h1 class="text-3xl font-extrabold uppercase !leading-snug text-primary md:text-4xl">Sign Up
                             </h1>
-                            <p class="text-base font-bold leading-normal text-white-dark">Enter your email and password
+                            <p class="text-base font-bold leading-normal text-secondary">Enter your email and password
                                 to register</p>
                         </div>
                         <form id="form" action="{{ route('register') }}" method="POST"
@@ -131,17 +125,17 @@
 
                         <div class="relative my-7 flex items-center justify-between md:mb-9">
                             <span
-                                class="inset-x-0 top-1/2 h-px w-1/2 -translate-y-1/2 bg-white-light dark:bg-white-dark"></span>
-                            <span class="px-2 font-bold uppercase text-white-dark dark:text-white-light">or</span>
+                                class="inset-x-0 top-1/2 h-px w-1/2 -translate-y-1/2 bg-slate-500 dark:bg-white-dark"></span>
+                            <span class="px-2 font-bold uppercase text-secondary dark:text-white-light">or</span>
                             <span
-                                class=" inset-x-0 top-1/2 h-px w-1/2 -translate-y-1/2 bg-white-light dark:bg-white-dark"></span>
+                                class=" inset-x-0 top-1/2 h-px w-1/2 -translate-y-1/2 bg-slate-500 dark:bg-white-dark"></span>
                         </div>
                         <div class="mb-10 md:mb-[60px]">
                             <ul class="flex justify-center gap-3.5">
                                 <li>
                                     <a href="javascript:"
                                         class="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
-                                        style="background: linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)">
+                                        style="background: linear-gradient(225deg, rgba(11, 44, 61, 1) 0%, rgba(179, 147, 89, 1) 100%)">
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                             <path
                                                 d="M8 2.05C9.925 2.05 10.1875 2.05 10.975 2.05C11.675 2.05 12.025 2.225 12.2875 2.3125C12.6375 2.4875 12.9 2.575 13.1625 2.8375C13.425 3.1 13.6 3.3625 13.6875 3.7125C13.775 3.975 13.8625 4.325 13.95 5.025C13.95 5.8125 13.95 5.9875 13.95 8C13.95 10.0125 13.95 10.1875 13.95 10.975C13.95 11.675 13.775 12.025 13.6875 12.2875C13.5125 12.6375 13.425 12.9 13.1625 13.1625C12.9 13.425 12.6375 13.6 12.2875 13.6875C12.025 13.775 11.675 13.8625 10.975 13.95C10.1875 13.95 10.0125 13.95 8 13.95C5.9875 13.95 5.8125 13.95 5.025 13.95C4.325 13.95 3.975 13.775 3.7125 13.6875C3.3625 13.5125 3.1 13.425 2.8375 13.1625C2.575 12.9 2.4 12.6375 2.3125 12.2875C2.225 12.025 2.1375 11.675 2.05 10.975C2.05 10.1875 2.05 10.0125 2.05 8C2.05 5.9875 2.05 5.8125 2.05 5.025C2.05 4.325 2.225 3.975 2.3125 3.7125C2.4875 3.3625 2.575 3.1 2.8375 2.8375C3.1 2.575 3.3625 2.4 3.7125 2.3125C3.975 2.225 4.325 2.1375 5.025 2.05C5.8125 2.05 6.075 2.05 8 2.05ZM8 0.737503C5.9875 0.737503 5.8125 0.737503 5.025 0.737503C4.2375 0.737503 3.7125 0.912504 3.275 1.0875C2.8375 1.2625 2.4 1.525 1.9625 1.9625C1.525 2.4 1.35 2.75 1.0875 3.275C0.912504 3.7125 0.825003 4.2375 0.737503 5.025C0.737503 5.8125 0.737503 6.075 0.737503 8C0.737503 10.0125 0.737503 10.1875 0.737503 10.975C0.737503 11.7625 0.912504 12.2875 1.0875 12.725C1.2625 13.1625 1.525 13.6 1.9625 14.0375C2.4 14.475 2.75 14.65 3.275 14.9125C3.7125 15.0875 4.2375 15.175 5.025 15.2625C5.8125 15.2625 6.075 15.2625 8 15.2625C9.925 15.2625 10.1875 15.2625 10.975 15.2625C11.7625 15.2625 12.2875 15.0875 12.725 14.9125C13.1625 14.7375 13.6 14.475 14.0375 14.0375C14.475 13.6 14.65 13.25 14.9125 12.725C15.0875 12.2875 15.175 11.7625 15.2625 10.975C15.2625 10.1875 15.2625 9.925 15.2625 8C15.2625 6.075 15.2625 5.8125 15.2625 5.025C15.2625 4.2375 15.0875 3.7125 14.9125 3.275C14.7375 2.8375 14.475 2.4 14.0375 1.9625C13.6 1.525 13.25 1.35 12.725 1.0875C12.2875 0.912504 11.7625 0.825003 10.975 0.737503C10.1875 0.737503 10.0125 0.737503 8 0.737503Z"
@@ -158,7 +152,7 @@
                                 <li>
                                     <a href="javascript:"
                                         class="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
-                                        style="background: linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)">
+                                        style="background: linear-gradient(225deg, rgba(11, 44, 61, 1) 0%, rgba(179, 147, 89, 1) 100%)">
                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                                             <path
                                                 d="M14 7C14 3.15 10.85 0 7 0C3.15 0 0 3.15 0 7C0 10.5 2.5375 13.3875 5.8625 13.9125V9.0125H4.1125V7H5.8625V5.425C5.8625 3.675 6.9125 2.7125 8.4875 2.7125C9.275 2.7125 10.0625 2.8875 10.0625 2.8875V4.6375H9.1875C8.3125 4.6375 8.05 5.1625 8.05 5.6875V7H9.975L9.625 9.0125H7.9625V14C11.4625 13.475 14 10.5 14 7Z"
@@ -169,7 +163,7 @@
                                 <li>
                                     <a href="javascript:"
                                         class="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
-                                        style="background: linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)">
+                                        style="background: linear-gradient(225deg, rgba(11, 44, 61, 1) 0%, rgba(179, 147, 89, 1) 100%)">
                                         <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
                                             <path
                                                 d="M14 1.625C13.475 1.8875 12.95 1.975 12.3375 2.0625C12.95 1.7125 13.3875 1.1875 13.5625 0.4875C13.0375 0.8375 12.425 1.0125 11.725 1.1875C11.2 0.6625 10.4125 0.3125 9.625 0.3125C7.7875 0.3125 6.3875 2.0625 6.825 3.8125C4.4625 3.725 2.3625 2.5875 0.875 0.8375C0.0875 2.15 0.525 3.8125 1.75 4.6875C1.3125 4.6875 0.875 4.5125 0.4375 4.3375C0.4375 5.65 1.4 6.875 2.7125 7.225C2.275 7.3125 1.8375 7.4 1.4 7.3125C1.75 8.45 2.8 9.325 4.1125 9.325C3.0625 10.1125 1.4875 10.55 0 10.375C1.3125 11.1625 2.8 11.6875 4.375 11.6875C9.7125 11.6875 12.6875 7.225 12.5125 3.1125C13.125 2.7625 13.65 2.2375 14 1.625Z"
@@ -180,7 +174,7 @@
                                 <li>
                                     <a href="javascript:"
                                         class="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
-                                        style="background: linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)">
+                                        style="background: linear-gradient(225deg, rgba(11, 44, 61, 1) 0%, rgba(179, 147, 89, 1) 100%);">
                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
                                                 d="M13.8512 7.15912C13.8512 6.66275 13.8066 6.18548 13.7239 5.72729H7.13116V8.43503H10.8984C10.7362 9.31003 10.243 10.0514 9.50162 10.5478V12.3041H11.7639C13.0875 11.0855 13.8512 9.29094 13.8512 7.15912Z"
@@ -202,7 +196,7 @@
                         <div class="text-center dark:text-white">
                             Already have an account ?
                             <a href="{{ route('login') }}"
-                                class="uppercase text-primary underline transition hover:text-black dark:hover:text-white">SIGN
+                                class="uppercase text-secondary underline transition hover:primary dark:hover:text-white">SIGN
                                 IN</a>
                         </div>
                     </div>
