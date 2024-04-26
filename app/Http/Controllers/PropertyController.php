@@ -25,7 +25,7 @@ class PropertyController extends Controller
 
     public function index()
     {
-        $properties = $this->propertyRepository->all();
+        $properties = Property::where('user_id', auth()->id())->paginate(8);
         $propertyTypes = PropertyType::all();
         $categories = Category::all();
         return view('agent.properties.index', compact('properties', 'propertyTypes', 'categories'));
@@ -43,10 +43,12 @@ class PropertyController extends Controller
 
     public function store(StorePropertyRequest $request)
     {
-        $property = $this->propertyRepository->create($request->validated());
+        $validated = $request->validated();
+        $validated['user_id'] = auth()->id();
+
+        $property = $this->propertyRepository->create($validated);
 
         if ($request->has('property_amenities')) {
-
             foreach ($request->property_amenities as $amenity) {
                 $property->amenities()->attach($amenity);
             }
@@ -142,6 +144,6 @@ class PropertyController extends Controller
         return response()->json(['message' => 'Image removed successfully']);
     }
 
-    
+
 
 }
