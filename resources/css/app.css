@@ -16,29 +16,13 @@
 /* sweetalert */
 @import 'sweetalert.css';
 
-/* tippy */
-@import 'tippy.css';
+
 
 /* noUi-slider */
 /* @import 'noui-slider.css'; */
 
-/* flatpickr */
-@import 'flatpickr.css';
 
-/* file upload with preview */
-@import 'file-upload-preview.css';
 
-/* markdown-editor */
-@import 'markdown-editor.css';
-
-/* select2 */
-@import 'select2.css';
-
-/* scrumboard */
-@import 'scrumboard.css';
-
-/* dragndrop */
-@import 'dragndrop.css';
 
 @tailwind base;
 @tailwind components;
@@ -3658,8 +3642,9 @@ hover:text-primary hover:before:!bg-primary ltr:before:mr-2 rtl:before:ml-2 dark
     }
 
     .btn-gradient {
-        @apply bg-gradient-to-r from-[#EF1262] to-[#4361EE] hover:to-[#EF1262] hover:from-[#4361EE] text-white;
+        @apply bg-gradient-to-r from-[#0B2C3D] to-[#B39359] hover:to-[#0B2C3D] hover:from-[#B39359] text-white;
     }
+    
 
     /* Badge */
     .badge {
@@ -3758,7 +3743,7 @@ hover:text-primary hover:before:!bg-primary ltr:before:mr-2 rtl:before:ml-2 dark
     /* checkbox & radio */
     .form-radio,
     .form-checkbox {
-        @apply h-5 w-5 cursor-pointer rounded border-2 border-[#e0e6ed] bg-transparent text-primary !shadow-none !outline-none !ring-0 !ring-offset-0 checked:bg-[length:90%_90%] disabled:cursor-not-allowed disabled:bg-[#eee] ltr:mr-1.5 rtl:ml-1.5
+        @apply h-5 w-5 cursor-pointer rounded border-2 border-[#e0e6ed] bg-transparent text-secondary !shadow-none !outline-none !ring-0 !ring-offset-0 checked:bg-[length:90%_90%] disabled:cursor-not-allowed disabled:bg-[#eee] ltr:mr-1.5 rtl:ml-1.5
       dark:border-[#253b5c] dark:checked:border-transparent dark:disabled:bg-[#1b2e4b];
     }
 
