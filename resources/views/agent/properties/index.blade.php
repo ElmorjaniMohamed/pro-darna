@@ -1,9 +1,5 @@
 <x-common.success-message />
 <x-layout.default>
-
-    <style>
-
-    </style>
     <!-- Start block -->
     <section class="bg-none p-3 sm:p-5 antialiased">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
@@ -75,9 +71,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($properties->where('user_id', auth()->user()->id)->count() > 0)
+                            @if ($properties->count() > 0)
                                 @foreach ($properties as $property)
-                                    @if ($property->user_id == auth()->user()->id)
+                                    
                                         <tr class="border-b dark:border-gray-700"
                                             id="{{ 'property_' . $property->id }}">
                                             <td>
@@ -180,7 +176,7 @@
                                                 </ul>
                                             </td>
                                         </tr>
-                                    @endif
+                                   
                                 @endforeach
                             @else
                                 <tr>
