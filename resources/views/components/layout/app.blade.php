@@ -90,12 +90,10 @@
 
                                         @if (Route::has('login') || Route::has('register'))
                                             @auth
-                                                <a href="#">
-                                                    <img src="assets/images/user/avater.png" loading="lazy" width="62"
-                                                        height="62" alt="avater">
-                                                </a>
+                                                
                                                 <ul class="flex flex-wrap items-center">
-                                                    <li class="sm:mr-5 xl:mr-[20px] relative group"><a href="#">
+                                                    <li class="sm:mr-5 xl:mr-[20px] relative group">
+                                                        <a href="#">
                                                             <img src="{{ asset('assets/images/user/avater.png') }}"
                                                                 loading="lazy" width="62" height="62" alt="avater">
                                                         </a>
