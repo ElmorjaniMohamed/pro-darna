@@ -24,6 +24,7 @@ class Property extends Model
         'property_type_id',
         'category_id',
         'image',
+        'user_id'
     ];
 
     public function agency()
