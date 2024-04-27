@@ -2,24 +2,24 @@
 
     <div x-data="auth">
         <div
-            class="relative flex min-h-screen items-center justify-center bg-gradient-to-r from-[#0B2C3D] to-[#B39359] px-6 py-10 dark:bg-[#060818] sm:px-16">
+            class="relative flex min-h-screen items-center justify-center bg-[#B39359] px-6 py-10 dark:bg-[#060818] sm:px-16">
           
             <x-common.success-message />
             <x-common.error-message />
             <div
-                class="relative w-full max-w-[870px] rounded-md bg-gradient-to-r from-[#B39359] to-[#0B2C3D]">
+                class="relative w-full max-w-[870px] rounded-md bg-[#0B2C3D]">
                 <div
                     class="relative flex flex-col justify-center rounded-md bg-[#0B2C3D] backdrop-blur-lg dark:bg-black/50 px-6 lg:min-h-[758px] py-20">
                     
                     <div class="mx-auto w-full max-w-[440px]">
                         <div class="mb-1 text-center flex justify-center items-center flex-col">
-                            <img class="w-64 h-64" src="/assets/images/resend.svg" alt="resend_email">
+                            <img class="w-40 h-40 mb-10" src="/assets/images/resend.svg" alt="resend_email">
                             <h1 class="mb-3 text-2xl font-bold text-slate-50 !leading-snug dark:text-white">Verify Account</h1>
                             <p class="text-slate-300">Your account is not verified. Please verify your account first</p>
                         </div>
                         <div class="space-y-5">
                             <a href="{{ route('resend.email') }}"
-                                class="btn btn-gradient !mt-6 w-full border-0 uppercase shadow-[#B39359]">Resend
+                                class="btn btn-gradient !mt-6 w-full border-0 uppercase shadow-primary">Resend
                                 verification email</a>
                         </div>
                     </div>

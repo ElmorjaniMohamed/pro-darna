@@ -30,7 +30,7 @@
                         <div class="mb-10">
                             <h1 class="text-3xl font-extrabold uppercase !leading-snug text-primary md:text-4xl">Sign in
                             </h1>
-                            <p class="text-base font-bold leading-normal text-[#0B2C3D]">Enter your email and password
+                            <p class="text-base font-bold leading-normal text-secondary dark:text-slate-200">Enter your email and password
                                 to login</p>
                         </div>
 

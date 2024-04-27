@@ -34,7 +34,7 @@
                         <div class="mb-10">
                             <h1 class="text-3xl font-extrabold uppercase !leading-snug text-primary md:text-4xl">Sign Up
                             </h1>
-                            <p class="text-base font-bold leading-normal text-secondary">Enter your email and password
+                            <p class="text-base font-bold leading-normal text-secondary dark:text-slate-200">Enter your email and password
                                 to register</p>
                         </div>
                         <form id="form" action="{{ route('register') }}" method="POST"
@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                             <button type="submit"
-                                class="btn btn-gradient btn[disabled] !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_rgba(67,97,238,0.44)]">
+                                class="btn btn-gradient btn[disabled] !mt-6 w-full border-0 uppercase shadow-primary">
                                 Sign Up
                             </button>
                         </form>

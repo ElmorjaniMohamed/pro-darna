@@ -32,40 +32,7 @@
                             Home
                         </a>
                     </li>
-                    <li class="inline-block">
-                        <a href="javascript:;"
-                            class="flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary"
-                            :class="{ '!border-primary text-primary': tab == 'payment-details' }"
-                            @click="tab='payment-details'">
-
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                                <circle opacity="0.5" cx="12" cy="12" r="10"
-                                    stroke="currentColor" stroke-width="1.5" />
-                                <path d="M12 6V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                <path
-                                    d="M15 9.5C15 8.11929 13.6569 7 12 7C10.3431 7 9 8.11929 9 9.5C9 10.8807 10.3431 12 12 12C13.6569 12 15 13.1193 15 14.5C15 15.8807 13.6569 17 12 17C10.3431 17 9 15.8807 9 14.5"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                            </svg>
-                            Payment Details
-                        </a>
-                    </li>
-                    <li class="inline-block">
-                        <a href="javascript:;"
-                            class="flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary"
-                            :class="{ '!border-primary text-primary': tab == 'preferences' }"
-                            @click="tab='preferences'">
-
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                                <circle cx="12" cy="6" r="4" stroke="currentColor"
-                                    stroke-width="1.5" />
-                                <ellipse opacity="0.5" cx="12" cy="17" rx="7" ry="4"
-                                    stroke="currentColor" stroke-width="1.5" />
-                            </svg>
-                            Preferences
-                        </a>
-                    </li>
+                  
                     <li class="inline-block">
                         <a href="javascript:;"
                             class="flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary"
@@ -539,12 +506,6 @@
                 <template x-if="tab === 'danger-zone'">
                     <div class="switch">
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                            <div class="panel space-y-5">
-                                <h5 class="font-semibold text-lg mb-4">Purge Cache</h5>
-                                <p>Remove the active resource from the cache without waiting for the predetermined cache
-                                    expiry time.</p>
-                                <button class="btn btn-secondary">Clear</button>
-                            </div>
                             <div class="panel space-y-5">
                                 <h5 class="font-semibold text-lg mb-4">Deactivate Account</h5>
                                 <p>You will not be able to receive messages, notifications for up to 24 hours.</p>
